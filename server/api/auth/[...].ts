@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import { z } from 'zod'
 import { Surreal } from 'surrealdb.node'
 export default NuxtAuthHandler({
+  secret: 'super_duper_unsecure',
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
     CredentialsProvider.default({

@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   elementPlus: { icon: 'ElIcon' },
   css: ['~/assets/styles.css'],
   auth: {
+    baseURL: '/api/auth',
     globalAppMiddleware: true,
     pages: {
       signIn: '/login',
