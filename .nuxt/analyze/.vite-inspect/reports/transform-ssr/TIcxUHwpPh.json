@@ -1,0 +1,258 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/tour/src/tour2.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { defineComponent, ref, computed, toRef, watch, useSlots, provide, openBlock, createElementBlock, Fragment, createBlock, Teleport, createElementVNode, mergeProps, unref, createVNode, normalizeStyle, withCtx, renderSlot, createCommentVNode } from 'vue';\nimport { useVModel } from '@vueuse/core';\nimport '../../../hooks/index.mjs';\nimport '../../../utils/index.mjs';\nimport ElTourMask from './mask2.mjs';\nimport ElTourContent from './content.mjs';\nimport ElTourSteps from './steps.mjs';\nimport { tourProps, tourEmits } from './tour.mjs';\nimport { useTarget, tourKey } from './helper.mjs';\nimport _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';\nimport { useNamespace } from '../../../hooks/use-namespace/index.mjs';\nimport { isBoolean } from '../../../utils/types.mjs';\nimport { useZIndex } from '../../../hooks/use-z-index/index.mjs';\n\nconst __default__ = defineComponent({\n  name: \"ElTour\"\n});\nconst _sfc_main = /* @__PURE__ */ defineComponent({\n  ...__default__,\n  props: tourProps,\n  emits: tourEmits,\n  setup(__props, { emit }) {\n    const props = __props;\n    const ns = useNamespace(\"tour\");\n    const total = ref(0);\n    const currentStep = ref();\n    const current = useVModel(props, \"current\", emit, {\n      passive: true\n    });\n    const currentTarget = computed(() => {\n      var _a;\n      return (_a = currentStep.value) == null ? void 0 : _a.target;\n    });\n    const kls = computed(() => [\n      ns.b(),\n      mergedType.value === \"primary\" ? ns.m(\"primary\") : \"\"\n    ]);\n    const mergedPlacement = computed(() => {\n      var _a;\n      return ((_a = currentStep.value) == null ? void 0 : _a.placement) || props.placement;\n    });\n    const mergedContentStyle = computed(() => {\n      var _a, _b;\n      return (_b = (_a = currentStep.value) == null ? void 0 : _a.contentStyle) != null ? _b : props.contentStyle;\n    });\n    const mergedMask = computed(() => {\n      var _a, _b;\n      return (_b = (_a = currentStep.value) == null ? void 0 : _a.mask) != null ? _b : props.mask;\n    });\n    const mergedShowMask = computed(() => !!mergedMask.value && props.modelValue);\n    const mergedMaskStyle = computed(() => isBoolean(mergedMask.value) ? void 0 : mergedMask.value);\n    const mergedShowArrow = computed(() => {\n      var _a, _b;\n      return !!currentTarget.value && ((_b = (_a = currentStep.value) == null ? void 0 : _a.showArrow) != null ? _b : props.showArrow);\n    });\n    const mergedScrollIntoViewOptions = computed(() => {\n      var _a, _b;\n      return (_b = (_a = currentStep.value) == null ? void 0 : _a.scrollIntoViewOptions) != null ? _b : props.scrollIntoViewOptions;\n    });\n    const mergedType = computed(() => {\n      var _a, _b;\n      return (_b = (_a = currentStep.value) == null ? void 0 : _a.type) != null ? _b : props.type;\n    });\n    const { nextZIndex } = useZIndex();\n    const nowZIndex = nextZIndex();\n    const mergedZIndex = computed(() => {\n      var _a;\n      return (_a = props.zIndex) != null ? _a : nowZIndex;\n    });\n    const { mergedPosInfo: pos, triggerTarget } = useTarget(currentTarget, toRef(props, \"modelValue\"), toRef(props, \"gap\"), mergedMask, mergedScrollIntoViewOptions);\n    watch(() => props.modelValue, (val) => {\n      if (!val) {\n        current.value = 0;\n      }\n    });\n    const onEscClose = () => {\n      if (props.closeOnPressEscape) {\n        emit(\"update:modelValue\", false);\n        emit(\"close\", current.value);\n      }\n    };\n    const onUpdateTotal = (val) => {\n      total.value = val;\n    };\n    const slots = useSlots();\n    provide(tourKey, {\n      currentStep,\n      current,\n      total,\n      showClose: toRef(props, \"showClose\"),\n      closeIcon: toRef(props, \"closeIcon\"),\n      mergedType,\n      ns,\n      slots,\n      updateModelValue(modelValue) {\n        emit(\"update:modelValue\", modelValue);\n      },\n      onClose() {\n        emit(\"close\", current.value);\n      },\n      onFinish() {\n        emit(\"finish\");\n      },\n      onChange() {\n        emit(\"change\", current.value);\n      }\n    });\n    return (_ctx, _cache) => {\n      var _a, _b;\n      return openBlock(), createElementBlock(Fragment, null, [\n        (openBlock(), createBlock(Teleport, { to: _ctx.appendTo }, [\n          createElementVNode(\"div\", mergeProps({ class: unref(kls) }, _ctx.$attrs), [\n            createVNode(ElTourMask, {\n              visible: unref(mergedShowMask),\n              fill: (_a = unref(mergedMaskStyle)) == null ? void 0 : _a.color,\n              style: normalizeStyle((_b = unref(mergedMaskStyle)) == null ? void 0 : _b.style),\n              pos: unref(pos),\n              \"z-index\": unref(mergedZIndex),\n              \"target-area-clickable\": _ctx.targetAreaClickable\n            }, null, 8, [\"visible\", \"fill\", \"style\", \"pos\", \"z-index\", \"target-area-clickable\"]),\n            _ctx.modelValue ? (openBlock(), createBlock(ElTourContent, {\n              key: unref(current),\n              reference: unref(triggerTarget),\n              placement: unref(mergedPlacement),\n              \"show-arrow\": unref(mergedShowArrow),\n              \"z-index\": unref(mergedZIndex),\n              style: normalizeStyle(unref(mergedContentStyle)),\n              onClose: onEscClose\n            }, {\n              default: withCtx(() => [\n                createVNode(unref(ElTourSteps), {\n                  current: unref(current),\n                  onUpdateTotal\n                }, {\n                  default: withCtx(() => [\n                    renderSlot(_ctx.$slots, \"default\")\n                  ]),\n                  _: 3\n                }, 8, [\"current\"])\n              ]),\n              _: 3\n            }, 8, [\"reference\", \"placement\", \"show-arrow\", \"z-index\", \"style\"])) : createCommentVNode(\"v-if\", true)\n          ], 16)\n        ], 8, [\"to\"])),\n        createCommentVNode(\" just for IDE \"),\n        false ? renderSlot(_ctx.$slots, \"indicators\", {\n          key: 0,\n          current: unref(current) + 1,\n          total: total.value\n        }) : createCommentVNode(\"v-if\", true)\n      ], 64);\n    };\n  }\n});\nvar Tour = /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__file\", \"tour.vue\"]]);\n\nexport { Tour as default };\n//# sourceMappingURL=tour2.mjs.map\n",
+      "start": 1709718918751,
+      "end": 1709718918775,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918775,
+      "end": 1709718918775,
+      "order": "normal"
+    }
+  ]
+}

@@ -7,7 +7,6 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
     "lint": "eslint . --cache . --fix",
     "surreal": "docker run --rm -u \":\" --pull always -p 8000:8000 -v $(pwd)/surrealData:/mydata surrealdb/surrealdb:latest start --log trace --auth --user root --pass root file:mydatabase.db"
   },

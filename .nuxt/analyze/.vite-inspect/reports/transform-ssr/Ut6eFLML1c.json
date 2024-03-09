@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/watermark/src/utils.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "function toLowercaseSeparator(key) {\n  return key.replace(/([A-Z])/g, \"-$1\").toLowerCase();\n}\nfunction getStyleStr(style) {\n  return Object.keys(style).map((key) => `${toLowercaseSeparator(key)}: ${style[key]};`).join(\" \");\n}\nfunction getPixelRatio() {\n  return window.devicePixelRatio || 1;\n}\nconst reRendering = (mutation, watermarkElement) => {\n  let flag = false;\n  if (mutation.removedNodes.length && watermarkElement) {\n    flag = Array.from(mutation.removedNodes).includes(watermarkElement);\n  }\n  if (mutation.type === \"attributes\" && mutation.target === watermarkElement) {\n    flag = true;\n  }\n  return flag;\n};\n\nexport { getPixelRatio, getStyleStr, reRendering, toLowercaseSeparator };\n//# sourceMappingURL=utils.mjs.map\n",
+      "start": 1709718919147,
+      "end": 1709718919159,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718919160,
+      "end": 1709718919160,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "function toLowercaseSeparator(key) {\n  return key.replace(/([A-Z])/g, \"-$1\").toLowerCase();\n}\nfunction getStyleStr(style) {\n  return Object.keys(style).map((key) => `${toLowercaseSeparator(key)}: ${style[key]};`).join(\" \");\n}\nfunction getPixelRatio() {\n  return (void 0).devicePixelRatio || 1;\n}\nconst reRendering = (mutation, watermarkElement) => {\n  let flag = false;\n  if (mutation.removedNodes.length && watermarkElement) {\n    flag = Array.from(mutation.removedNodes).includes(watermarkElement);\n  }\n  if (mutation.type === \"attributes\" && mutation.target === watermarkElement) {\n    flag = true;\n  }\n  return flag;\n};\nexport { getPixelRatio, getStyleStr, reRendering, toLowercaseSeparator };\n",
+      "start": 1709718919160,
+      "end": 1709718919402,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/watermark/src/utils.mjs\"],\n  \"sourcesContent\": [\"function toLowercaseSeparator(key) {\\n  return key.replace(/([A-Z])/g, \\\"-$1\\\").toLowerCase();\\n}\\nfunction getStyleStr(style) {\\n  return Object.keys(style).map((key) => `${toLowercaseSeparator(key)}: ${style[key]};`).join(\\\" \\\");\\n}\\nfunction getPixelRatio() {\\n  return window.devicePixelRatio || 1;\\n}\\nconst reRendering = (mutation, watermarkElement) => {\\n  let flag = false;\\n  if (mutation.removedNodes.length && watermarkElement) {\\n    flag = Array.from(mutation.removedNodes).includes(watermarkElement);\\n  }\\n  if (mutation.type === \\\"attributes\\\" && mutation.target === watermarkElement) {\\n    flag = true;\\n  }\\n  return flag;\\n};\\n\\nexport { getPixelRatio, getStyleStr, reRendering, toLowercaseSeparator };\\n//# sourceMappingURL=utils.mjs.map\\n\"],\n  \"mappings\": \"AAAA,SAAS,qBAAqB,KAAK;AACjC,SAAO,IAAI,QAAQ,YAAY,KAAK,EAAE,YAAY;AACpD;AACA,SAAS,YAAY,OAAO;AAC1B,SAAO,OAAO,KAAK,KAAK,EAAE,IAAI,CAAC,QAAQ,GAAG,qBAAqB,GAAG,CAAC,KAAK,MAAM,GAAG,CAAC,GAAG,EAAE,KAAK,GAAG;AACjG;AACA,SAAS,gBAAgB;AACvB,SAAO,SAAO,oBAAoB;AACpC;AACA,MAAM,cAAc,CAAC,UAAU,qBAAqB;AAClD,MAAI,OAAO;AACX,MAAI,SAAS,aAAa,UAAU,kBAAkB;AACpD,WAAO,MAAM,KAAK,SAAS,YAAY,EAAE,SAAS,gBAAgB;AAAA,EACpE;AACA,MAAI,SAAS,SAAS,gBAAgB,SAAS,WAAW,kBAAkB;AAC1E,WAAO;AAAA,EACT;AACA,SAAO;AACT;AAEA,SAAS,eAAe,aAAa,aAAa;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718919403,
+      "end": 1709718919403,
+      "order": "normal"
+    }
+  ]
+}

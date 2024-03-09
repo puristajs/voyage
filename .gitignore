@@ -1,7 +1,6 @@
 # Nuxt dev/build outputs
 .output
 .data
-.nuxt
 .nitro
 .cache
 dist
@@ -27,4 +26,5 @@ logs
 surrealData
 coverage
 
+package-lock.json
 bun.lockb

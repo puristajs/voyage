@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/directives/repeat-click/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import '../../utils/index.mjs';\nimport { isFunction } from '@vue/shared';\n\nconst REPEAT_INTERVAL = 100;\nconst REPEAT_DELAY = 600;\nconst vRepeatClick = {\n  beforeMount(el, binding) {\n    const value = binding.value;\n    const { interval = REPEAT_INTERVAL, delay = REPEAT_DELAY } = isFunction(value) ? {} : value;\n    let intervalId;\n    let delayId;\n    const handler = () => isFunction(value) ? value() : value.handler();\n    const clear = () => {\n      if (delayId) {\n        clearTimeout(delayId);\n        delayId = void 0;\n      }\n      if (intervalId) {\n        clearInterval(intervalId);\n        intervalId = void 0;\n      }\n    };\n    el.addEventListener(\"mousedown\", (evt) => {\n      if (evt.button !== 0)\n        return;\n      clear();\n      handler();\n      document.addEventListener(\"mouseup\", () => clear(), {\n        once: true\n      });\n      delayId = setTimeout(() => {\n        intervalId = setInterval(() => {\n          handler();\n        }, interval);\n      }, delay);\n    });\n  }\n};\n\nexport { REPEAT_DELAY, REPEAT_INTERVAL, vRepeatClick };\n//# sourceMappingURL=index.mjs.map\n",
+      "start": 1709718918434,
+      "end": 1709718918481,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import \"../../utils/index.mjs\";\nimport { isFunction } from \"@vue/shared\";\nconst REPEAT_INTERVAL = 100;\nconst REPEAT_DELAY = 600;\nconst vRepeatClick = {\n  beforeMount(el, binding) {\n    const value = binding.value;\n    const { interval = REPEAT_INTERVAL, delay = REPEAT_DELAY } = isFunction(value) ? {} : value;\n    let intervalId;\n    let delayId;\n    const handler = () => isFunction(value) ? value() : value.handler();\n    const clear = () => {\n      if (delayId) {\n        clearTimeout(delayId);\n        delayId = void 0;\n      }\n      if (intervalId) {\n        clearInterval(intervalId);\n        intervalId = void 0;\n      }\n    };\n    el.addEventListener(\"mousedown\", (evt) => {\n      if (evt.button !== 0)\n        return;\n      clear();\n      handler();\n      (void 0).addEventListener(\"mouseup\", () => clear(), {\n        once: true\n      });\n      delayId = setTimeout(() => {\n        intervalId = setInterval(() => {\n          handler();\n        }, interval);\n      }, delay);\n    });\n  }\n};\nexport { REPEAT_DELAY, REPEAT_INTERVAL, vRepeatClick };\n",
+      "start": 1709718918481,
+      "end": 1709718918559,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/directives/repeat-click/index.mjs\"],\n  \"sourcesContent\": [\"import '../../utils/index.mjs';\\nimport { isFunction } from '@vue/shared';\\n\\nconst REPEAT_INTERVAL = 100;\\nconst REPEAT_DELAY = 600;\\nconst vRepeatClick = {\\n  beforeMount(el, binding) {\\n    const value = binding.value;\\n    const { interval = REPEAT_INTERVAL, delay = REPEAT_DELAY } = isFunction(value) ? {} : value;\\n    let intervalId;\\n    let delayId;\\n    const handler = () => isFunction(value) ? value() : value.handler();\\n    const clear = () => {\\n      if (delayId) {\\n        clearTimeout(delayId);\\n        delayId = void 0;\\n      }\\n      if (intervalId) {\\n        clearInterval(intervalId);\\n        intervalId = void 0;\\n      }\\n    };\\n    el.addEventListener(\\\"mousedown\\\", (evt) => {\\n      if (evt.button !== 0)\\n        return;\\n      clear();\\n      handler();\\n      document.addEventListener(\\\"mouseup\\\", () => clear(), {\\n        once: true\\n      });\\n      delayId = setTimeout(() => {\\n        intervalId = setInterval(() => {\\n          handler();\\n        }, interval);\\n      }, delay);\\n    });\\n  }\\n};\\n\\nexport { REPEAT_DELAY, REPEAT_INTERVAL, vRepeatClick };\\n//# sourceMappingURL=index.mjs.map\\n\"],\n  \"mappings\": \"AAAA,OAAO;AACP,SAAS,kBAAkB;AAE3B,MAAM,kBAAkB;AACxB,MAAM,eAAe;AACrB,MAAM,eAAe;AAAA,EACnB,YAAY,IAAI,SAAS;AACvB,UAAM,QAAQ,QAAQ;AACtB,UAAM,EAAE,WAAW,iBAAiB,QAAQ,aAAa,IAAI,WAAW,KAAK,IAAI,CAAC,IAAI;AACtF,QAAI;AACJ,QAAI;AACJ,UAAM,UAAU,MAAM,WAAW,KAAK,IAAI,MAAM,IAAI,MAAM,QAAQ;AAClE,UAAM,QAAQ,MAAM;AAClB,UAAI,SAAS;AACX,qBAAa,OAAO;AACpB,kBAAU;AAAA,MACZ;AACA,UAAI,YAAY;AACd,sBAAc,UAAU;AACxB,qBAAa;AAAA,MACf;AAAA,IACF;AACA,OAAG,iBAAiB,aAAa,CAAC,QAAQ;AACxC,UAAI,IAAI,WAAW;AACjB;AACF,YAAM;AACN,cAAQ;AACR,eAAS,iBAAiB,WAAW,MAAM,MAAM,GAAG;AAAA,QAClD,MAAM;AAAA,MACR,CAAC;AACD,gBAAU,WAAW,MAAM;AACzB,qBAAa,YAAY,MAAM;AAC7B,kBAAQ;AAAA,QACV,GAAG,QAAQ;AAAA,MACb,GAAG,KAAK;AAAA,IACV,CAAC;AAAA,EACH;AACF;AAEA,SAAS,cAAc,iBAAiB;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718918559,
+      "end": 1709718918559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718918559,
+      "end": 1709718918560,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718918560,
+      "end": 1709718918560,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918560,
+      "end": 1709718918560,
+      "order": "normal"
+    }
+  ]
+}

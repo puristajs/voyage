@@ -1,0 +1,222 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/@formkit/observer/dist/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { has } from '@formkit/utils';\nimport { isNode } from '@formkit/core';\n\n// packages/observer/src/index.ts\nvar revokedObservers = /* @__PURE__ */ new WeakSet();\nfunction createObserver(node, dependencies) {\n  const deps = dependencies || Object.assign(/* @__PURE__ */ new Map(), { active: false });\n  const receipts = /* @__PURE__ */ new Map();\n  const addDependency = function(event) {\n    if (!deps.active)\n      return;\n    if (!deps.has(node))\n      deps.set(node, /* @__PURE__ */ new Set());\n    deps.get(node)?.add(event);\n  };\n  const observeProps = function(props) {\n    return new Proxy(props, {\n      get(...args) {\n        typeof args[1] === \"string\" && addDependency(`prop:${args[1]}`);\n        return Reflect.get(...args);\n      }\n    });\n  };\n  const observeLedger = function(ledger) {\n    return new Proxy(ledger, {\n      get(...args) {\n        if (args[1] === \"value\") {\n          return (key) => {\n            addDependency(`count:${key}`);\n            return ledger.value(key);\n          };\n        }\n        return Reflect.get(...args);\n      }\n    });\n  };\n  const observe = function(value, property) {\n    if (isNode(value)) {\n      return createObserver(value, deps);\n    }\n    if (property === \"value\")\n      addDependency(\"commit\");\n    if (property === \"_value\")\n      addDependency(\"input\");\n    if (property === \"props\")\n      return observeProps(value);\n    if (property === \"ledger\")\n      return observeLedger(value);\n    if (property === \"children\") {\n      addDependency(\"child\");\n      addDependency(\"childRemoved\");\n    }\n    return value;\n  };\n  const {\n    proxy: observed,\n    revoke\n  } = Proxy.revocable(node, {\n    get(...args) {\n      switch (args[1]) {\n        case \"_node\":\n          return node;\n        case \"deps\":\n          return deps;\n        case \"watch\":\n          return (block, after, pos) => watch(observed, block, after, pos);\n        case \"observe\":\n          return () => {\n            const old = new Map(deps);\n            deps.clear();\n            deps.active = true;\n            return old;\n          };\n        case \"stopObserve\":\n          return () => {\n            const newDeps = new Map(deps);\n            deps.active = false;\n            return newDeps;\n          };\n        case \"receipts\":\n          return receipts;\n        case \"kill\":\n          return () => {\n            removeListeners(receipts);\n            revokedObservers.add(args[2]);\n            revoke();\n            return void 0;\n          };\n      }\n      const value = Reflect.get(...args);\n      if (typeof value === \"function\") {\n        return (...subArgs) => {\n          const subValue = value(...subArgs);\n          return observe(subValue, args[1]);\n        };\n      }\n      return observe(value, args[1]);\n    }\n  });\n  return observed;\n}\nfunction applyListeners(node, [toAdd, toRemove], callback, pos) {\n  toAdd.forEach((events, depNode) => {\n    events.forEach((event) => {\n      node.receipts.has(depNode) || node.receipts.set(depNode, {});\n      const events2 = node.receipts.get(depNode) ?? {};\n      events2[event] = events2[event] ?? [];\n      events2[event].push(depNode.on(event, callback, pos));\n      node.receipts.set(depNode, events2);\n    });\n  });\n  toRemove.forEach((events, depNode) => {\n    events.forEach((event) => {\n      if (node.receipts.has(depNode)) {\n        const nodeReceipts = node.receipts.get(depNode);\n        if (nodeReceipts && has(nodeReceipts, event)) {\n          nodeReceipts[event].map(depNode.off);\n          delete nodeReceipts[event];\n          node.receipts.set(depNode, nodeReceipts);\n        }\n      }\n    });\n  });\n}\nfunction removeListeners(receipts) {\n  receipts.forEach((events, node) => {\n    for (const event in events) {\n      events[event].map(node.off);\n    }\n  });\n  receipts.clear();\n}\nfunction watch(node, block, after, pos) {\n  const doAfterObservation = (res2) => {\n    const newDeps = node.stopObserve();\n    applyListeners(\n      node,\n      diffDeps(oldDeps, newDeps),\n      () => watch(node, block, after, pos),\n      pos\n    );\n    if (after)\n      after(res2);\n  };\n  const oldDeps = new Map(node.deps);\n  node.observe();\n  const res = block(node);\n  if (res instanceof Promise)\n    res.then((val) => doAfterObservation(val));\n  else\n    doAfterObservation(res);\n}\nfunction diffDeps(previous, current) {\n  const toAdd = /* @__PURE__ */ new Map();\n  const toRemove = /* @__PURE__ */ new Map();\n  current.forEach((events, node) => {\n    if (!previous.has(node)) {\n      toAdd.set(node, events);\n    } else {\n      const eventsToAdd = /* @__PURE__ */ new Set();\n      const previousEvents = previous.get(node);\n      events.forEach(\n        (event) => !previousEvents?.has(event) && eventsToAdd.add(event)\n      );\n      toAdd.set(node, eventsToAdd);\n    }\n  });\n  previous.forEach((events, node) => {\n    if (!current.has(node)) {\n      toRemove.set(node, events);\n    } else {\n      const eventsToRemove = /* @__PURE__ */ new Set();\n      const newEvents = current.get(node);\n      events.forEach(\n        (event) => !newEvents?.has(event) && eventsToRemove.add(event)\n      );\n      toRemove.set(node, eventsToRemove);\n    }\n  });\n  return [toAdd, toRemove];\n}\nfunction isKilled(node) {\n  return revokedObservers.has(node);\n}\n\nexport { applyListeners, createObserver, diffDeps, isKilled, removeListeners };\n//# sourceMappingURL=out.js.map\n//# sourceMappingURL=index.mjs.map",
+      "start": 1709718916275,
+      "end": 1709718916352,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718916352,
+      "end": 1709718916352,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { ref, onMounted, watch } from 'vue';\n\nconst useThrottleRender = (loading, throttle = 0) => {\n  if (throttle === 0)\n    return loading;\n  const throttled = ref(false);\n  let timeoutHandle = 0;\n  const dispatchThrottling = () => {\n    if (timeoutHandle) {\n      clearTimeout(timeoutHandle);\n    }\n    timeoutHandle = window.setTimeout(() => {\n      throttled.value = loading.value;\n    }, throttle);\n  };\n  onMounted(dispatchThrottling);\n  watch(() => loading.value, (val) => {\n    if (val) {\n      dispatchThrottling();\n    } else {\n      throttled.value = val;\n    }\n  });\n  return throttled;\n};\n\nexport { useThrottleRender };\n//# sourceMappingURL=index.mjs.map\n",
+      "start": 1709718918479,
+      "end": 1709718918492,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918492,
+      "end": 1709718918492,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { ref, onMounted, watch } from \"vue\";\nconst useThrottleRender = (loading, throttle = 0) => {\n  if (throttle === 0)\n    return loading;\n  const throttled = ref(false);\n  let timeoutHandle = 0;\n  const dispatchThrottling = () => {\n    if (timeoutHandle) {\n      clearTimeout(timeoutHandle);\n    }\n    timeoutHandle = (void 0).setTimeout(() => {\n      throttled.value = loading.value;\n    }, throttle);\n  };\n  onMounted(dispatchThrottling);\n  watch(() => loading.value, (val) => {\n    if (val) {\n      dispatchThrottling();\n    } else {\n      throttled.value = val;\n    }\n  });\n  return throttled;\n};\nexport { useThrottleRender };\n",
+      "start": 1709718918492,
+      "end": 1709718918583,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/hooks/use-throttle-render/index.mjs\"],\n  \"sourcesContent\": [\"import { ref, onMounted, watch } from 'vue';\\n\\nconst useThrottleRender = (loading, throttle = 0) => {\\n  if (throttle === 0)\\n    return loading;\\n  const throttled = ref(false);\\n  let timeoutHandle = 0;\\n  const dispatchThrottling = () => {\\n    if (timeoutHandle) {\\n      clearTimeout(timeoutHandle);\\n    }\\n    timeoutHandle = window.setTimeout(() => {\\n      throttled.value = loading.value;\\n    }, throttle);\\n  };\\n  onMounted(dispatchThrottling);\\n  watch(() => loading.value, (val) => {\\n    if (val) {\\n      dispatchThrottling();\\n    } else {\\n      throttled.value = val;\\n    }\\n  });\\n  return throttled;\\n};\\n\\nexport { useThrottleRender };\\n//# sourceMappingURL=index.mjs.map\\n\"],\n  \"mappings\": \"AAAA,SAAS,KAAK,WAAW,aAAa;AAEtC,MAAM,oBAAoB,CAAC,SAAS,WAAW,MAAM;AACnD,MAAI,aAAa;AACf,WAAO;AACT,QAAM,YAAY,IAAI,KAAK;AAC3B,MAAI,gBAAgB;AACpB,QAAM,qBAAqB,MAAM;AAC/B,QAAI,eAAe;AACjB,mBAAa,aAAa;AAAA,IAC5B;AACA,oBAAgB,SAAO,WAAW,MAAM;AACtC,gBAAU,QAAQ,QAAQ;AAAA,IAC5B,GAAG,QAAQ;AAAA,EACb;AACA,YAAU,kBAAkB;AAC5B,QAAM,MAAM,QAAQ,OAAO,CAAC,QAAQ;AAClC,QAAI,KAAK;AACP,yBAAmB;AAAA,IACrB,OAAO;AACL,gBAAU,QAAQ;AAAA,IACpB;AAAA,EACF,CAAC;AACD,SAAO;AACT;AAEA,SAAS;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "result": "import { ref, onMounted, watch } from \"vue\";\nconst useThrottleRender = (loading, throttle = 0) => {\n  if (throttle === 0)\n    return loading;\n  const throttled = ref(false);\n  let timeoutHandle = 0;\n  const dispatchThrottling = () => {\n    if (timeoutHandle) {\n      clearTimeout(timeoutHandle);\n    }\n    timeoutHandle = (void 0).setTimeout(() => {\n      throttled.value = loading.value;\n    }, throttle);\n  };\n   false && /*@__PURE__*/ onMounted(dispatchThrottling);\n  watch(() => loading.value, (val) => {\n    if (val) {\n      dispatchThrottling();\n    } else {\n      throttled.value = val;\n    }\n  });\n  return throttled;\n};\nexport { useThrottleRender };\n",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAClC,CAAC,CAAC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjB,CAAC,CAAC,CAAC,CAAC;AACJ,mCAAW,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACd,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5B,CAAC,CAAC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC;AACF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;"
+      }
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    }
+  ]
+}

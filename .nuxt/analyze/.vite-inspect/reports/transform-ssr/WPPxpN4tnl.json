@@ -1,0 +1,290 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/pages/index.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n    <div class=\"page\">\n        <div class=\"left-side\">\n            <div style=\"text-align: center; width: 100%\">\n                <h1>Welcome back</h1>\n                <p>\n                    <strong>&nbsp;</strong>\n                </p>\n                <div\n                    style=\"\n                        width: 80%;\n                        min-width: 300px;\n                        max-width: 400px;\n                        margin: auto;\n                        height: 500px;\n                        text-align: left;\n                    \"\n                >\n                    <FormKit type=\"form\" submit-label=\"Login\">\n                        <FormKit\n                            type=\"text\"\n                            name=\"email\"\n                            label=\"Your email\"\n                            placeholder=\"jane@example.com\"\n                            validation=\"required|email\"\n                        />\n                        <FormKit\n                            type=\"password\"\n                            name=\"password\"\n                            label=\"Password\"\n                            placeholder=\"Your password\"\n                            validation=\"required\"\n                        />\n                    </FormKit>\n                    <div class=\"footer\">\n                        <el-button link>Lost password</el-button>\n                    </div>\n                    <div style=\"margin-top: 50px\">\n                        <el-button size=\"large\">GitHub Login</el-button>\n                        <el-button size=\"large\">Google Login</el-button>\n                        <el-button size=\"large\">Microsoft</el-button>\n                    </div>\n                </div>\n                <p>PURISTA VOYAGE allows you to document,</p>\n            </div>\n        </div>\n        <div class=\"right-side\">\n            <div style=\"text-align: center; width: 100%\">\n                <h1>\n                    PURISTA\n                    <span class=\"headline-primary\">VOYAGE</span>\n                </h1>\n                <p>\n                    <strong>Start your visual journey now.</strong>\n                </p>\n                <el-carousel :interval=\"5000\" arrow=\"always\" height=\"auto\">\n                    <el-carousel-item\n                        v-for=\"item in 4\"\n                        :key=\"item\"\n                        style=\"height: 500px\"\n                    >\n                        <h3 text=\"2xl\" justify=\"center\">{{ item }}</h3>\n                    </el-carousel-item>\n                </el-carousel>\n                <p>PURISTA VOYAGE allows you to document,</p>\n            </div>\n        </div>\n    </div>\n</template>\n\n<style scoped>\n.page {\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n}\n\n.page > * {\n    flex-grow: 1;\n    flex-basis: 400px;\n}\n\n.left-side {\n    min-height: 100vh;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: center;\n}\n\n.right-side {\n    background-color: var(--el-fill-color);\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: center;\n}\n\n.headline-primary {\n    color: var(--el-color-primary) !important;\n}\n\n.footer {\n    text-align: right;\n}\n\n.el-card.is-always-shadow {\n    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\n}\n\n.el-carousel__item h3 {\n    color: #475669;\n    opacity: 0.75;\n    line-height: 300px;\n    margin: 0;\n    text-align: center;\n}\n\n.el-carousel__item:nth-child(2n) {\n    background-color: #99a9bf;\n}\n\n.el-carousel__item:nth-child(2n + 1) {\n    background-color: #d3dce6;\n}\n</style>\n",
+      "start": 1709718918767,
+      "end": 1709718918794,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918794,
+      "end": 1709718918794,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "const _sfc_main = {}\nimport { resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\"\nimport { ssrRenderComponent as _ssrRenderComponent, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\"\n\nfunction _sfc_ssrRender(_ctx, _push, _parent, _attrs) {\n  const _component_FormKit = _resolveComponent(\"FormKit\")\n  const _component_el_button = _resolveComponent(\"el-button\")\n  const _component_el_carousel = _resolveComponent(\"el-carousel\")\n  const _component_el_carousel_item = _resolveComponent(\"el-carousel-item\")\n\n  _push(`<div${\n    _ssrRenderAttrs(_mergeProps({ class: \"page\" }, _attrs))\n  } data-v-5d9a05bc><div class=\"left-side\" data-v-5d9a05bc><div style=\"${\n    _ssrRenderStyle({\"text-align\":\"center\",\"width\":\"100%\"})\n  }\" data-v-5d9a05bc><h1 data-v-5d9a05bc>Welcome back</h1><p data-v-5d9a05bc><strong data-v-5d9a05bc> </strong></p><div style=\"${\n    _ssrRenderStyle({\"width\":\"80%\",\"min-width\":\"300px\",\"max-width\":\"400px\",\"margin\":\"auto\",\"height\":\"500px\",\"text-align\":\"left\"})\n  }\" data-v-5d9a05bc>`)\n  _push(_ssrRenderComponent(_component_FormKit, {\n    type: \"form\",\n    \"submit-label\": \"Login\"\n  }, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(_ssrRenderComponent(_component_FormKit, {\n          type: \"text\",\n          name: \"email\",\n          label: \"Your email\",\n          placeholder: \"jane@example.com\",\n          validation: \"required|email\"\n        }, null, _parent, _scopeId))\n        _push(_ssrRenderComponent(_component_FormKit, {\n          type: \"password\",\n          name: \"password\",\n          label: \"Password\",\n          placeholder: \"Your password\",\n          validation: \"required\"\n        }, null, _parent, _scopeId))\n      } else {\n        return [\n          _createVNode(_component_FormKit, {\n            type: \"text\",\n            name: \"email\",\n            label: \"Your email\",\n            placeholder: \"jane@example.com\",\n            validation: \"required|email\"\n          }),\n          _createVNode(_component_FormKit, {\n            type: \"password\",\n            name: \"password\",\n            label: \"Password\",\n            placeholder: \"Your password\",\n            validation: \"required\"\n          })\n        ]\n      }\n    }),\n    _: 1\n  }, _parent))\n  _push(`<div class=\"footer\" data-v-5d9a05bc>`)\n  _push(_ssrRenderComponent(_component_el_button, { link: \"\" }, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(`Lost password`)\n      } else {\n        return [\n          _createTextVNode(\"Lost password\")\n        ]\n      }\n    }),\n    _: 1\n  }, _parent))\n  _push(`</div><div style=\"${_ssrRenderStyle({\"margin-top\":\"50px\"})}\" data-v-5d9a05bc>`)\n  _push(_ssrRenderComponent(_component_el_button, { size: \"large\" }, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(`GitHub Login`)\n      } else {\n        return [\n          _createTextVNode(\"GitHub Login\")\n        ]\n      }\n    }),\n    _: 1\n  }, _parent))\n  _push(_ssrRenderComponent(_component_el_button, { size: \"large\" }, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(`Google Login`)\n      } else {\n        return [\n          _createTextVNode(\"Google Login\")\n        ]\n      }\n    }),\n    _: 1\n  }, _parent))\n  _push(_ssrRenderComponent(_component_el_button, { size: \"large\" }, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(`Microsoft`)\n      } else {\n        return [\n          _createTextVNode(\"Microsoft\")\n        ]\n      }\n    }),\n    _: 1\n  }, _parent))\n  _push(`</div></div><p data-v-5d9a05bc>PURISTA VOYAGE allows you to document,</p></div></div><div class=\"right-side\" data-v-5d9a05bc><div style=\"${_ssrRenderStyle({\"text-align\":\"center\",\"width\":\"100%\"})}\" data-v-5d9a05bc><h1 data-v-5d9a05bc> PURISTA <span class=\"headline-primary\" data-v-5d9a05bc>VOYAGE</span></h1><p data-v-5d9a05bc><strong data-v-5d9a05bc>Start your visual journey now.</strong></p>`)\n  _push(_ssrRenderComponent(_component_el_carousel, {\n    interval: 5000,\n    arrow: \"always\",\n    height: \"auto\"\n  }, {\n    default: _withCtx((_, _push, _parent, _scopeId) => {\n      if (_push) {\n        _push(`<!--[-->`)\n        _ssrRenderList(4, (item) => {\n          _push(_ssrRenderComponent(_component_el_carousel_item, {\n            key: item,\n            style: {\"height\":\"500px\"}\n          }, {\n            default: _withCtx((_, _push, _parent, _scopeId) => {\n              if (_push) {\n                _push(`<h3 text=\"2xl\" justify=\"center\" data-v-5d9a05bc${\n                  _scopeId\n                }>${\n                  _ssrInterpolate(item)\n                }</h3>`)\n              } else {\n                return [\n                  _createVNode(\"h3\", {\n                    text: \"2xl\",\n                    justify: \"center\"\n                  }, _toDisplayString(item), 1)\n                ]\n              }\n            }),\n            _: 2\n          }, _parent, _scopeId))\n        })\n        _push(`<!--]-->`)\n      } else {\n        return [\n          (_openBlock(), _createBlock(_Fragment, null, _renderList(4, (item) => {\n            return _createVNode(_component_el_carousel_item, {\n              key: item,\n              style: {\"height\":\"500px\"}\n            }, {\n              default: _withCtx(() => [\n                _createVNode(\"h3\", {\n                  text: \"2xl\",\n                  justify: \"center\"\n                }, _toDisplayString(item), 1)\n              ]),\n              _: 2\n            }, 1024)\n          }), 64))\n        ]\n      }\n    }),\n    _: 1\n  }, _parent))\n  _push(`<p data-v-5d9a05bc>PURISTA VOYAGE allows you to document,</p></div></div></div>`)\n}\n\nimport \"/Users/sebastianwessel/projekte/voyage/pages/index.vue?vue&type=style&index=0&scoped=5d9a05bc&lang.css\"\n\nimport { useSSRContext as __vite_useSSRContext } from 'vue'\nconst _sfc_setup = _sfc_main.setup\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext()\n  ;(ssrContext.modules || (ssrContext.modules = new Set())).add(\"pages/index.vue\")\n  return _sfc_setup ? _sfc_setup(props, ctx) : undefined\n}\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['ssrRender',_sfc_ssrRender],['__scopeId',\"data-v-5d9a05bc\"]])",
+      "start": 1709718918794,
+      "end": 1709718918798,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/sebastianwessel/projekte/voyage/pages/index.vue"
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;EAAA;IAAA,gBAAA,cACS,KAAK,EAAC,MAAM,IADrB;;IAAA,gBAGiB,sCAAuC;;IAHxD,gBASoB,4GAOC;;EAhBrB,MAAA;IAkB6B,IAAI,EAAC,MAAM;IAAC,cAAY,EAAC,OAAO;;IAlB7D,kBAkBoB,CAeU;UAjC9B;QAAA,MAAA;UAoB4B,IAAI,EAAC,MAAM;UACX,IAAI,EAAC,OAAO;UACZ,KAAK,EAAC,YAAY;UAClB,WAAW,EAAC,kBAAkB;UAC9B,UAAU,EAAC,gBAAgB;;QAxBvD,MAAA;UA2B4B,IAAI,EAAC,UAAU;UACf,IAAI,EAAC,UAAU;UACf,KAAK,EAAC,UAAU;UAChB,WAAW,EAAC,eAAe;UAC3B,UAAU,EAAC,UAAU;;;;UAZzB,aAME;YALE,IAAI,EAAC,MAAM;YACX,IAAI,EAAC,OAAO;YACZ,KAAK,EAAC,YAAY;YAClB,WAAW,EAAC,kBAAkB;YAC9B,UAAU,EAAC,gBAAgB;;UAE/B,aAME;YALE,IAAI,EAAC,UAAU;YACf,IAAI,EAAC,UAAU;YACf,KAAK,EAAC,UAAU;YAChB,WAAW,EAAC,eAAe;YAC3B,UAAU,EAAC,UAAU;;;;;IA/BjD,GAAA;;EAAA;EAAA,MAAA,4CAmCmC,IAAI,EAAJ,EAAI;IAnCvC,kBAmCwB,CAAyC;UAnCjE;QAAA;;;UAAA,iBAmCwC,eAAa;;;;IAnCrD,GAAA;;EAAA,2BAAA,gBAqCyB,qBAAwB;EArCjD,MAAA,4CAsCmC,IAAI,EAAC,OAAO;IAtC/C,kBAsCwB,CAAgD;UAtCxE;QAAA;;;UAAA,iBAsCgD,cAAY;;;;IAtC5D,GAAA;;EAAA,MAAA,4CAuCmC,IAAI,EAAC,OAAO;IAvC/C,kBAuCwB,CAAgD;UAvCxE;QAAA;;;UAAA,iBAuCgD,cAAY;;;;IAvC5D,GAAA;;EAAA,MAAA,4CAwCmC,IAAI,EAAC,OAAO;IAxC/C,kBAwCwB,CAA6C;UAxCrE;QAAA;;;UAAA,iBAwCgD,WAAS;;;;IAxCzD,GAAA;;EAAA,kJAAA,gBA+CiB,sCAAuC;EA/CxD,MAAA;IAuD8B,QAAQ,EAAE,IAAI;IAAE,KAAK,EAAC,QAAQ;IAAC,MAAM,EAAC,MAAM;;IAvD1E,kBAuDgB,CAQc;UA/D9B;QAAA;QAAA,eAyDuC,CAAC,EAzDxC,CAyD+B,IAAI;UAzDnC,MAAA;YA0DyB,GAAG,EAAE,IAAI;YACV,KAAqB,EAArB,kBAAqB;;YA3D7C,kBAwDoB,CAMmB;kBA9DvC;gBAAA;kBAAA;;kBAAA,gBA6D2D,IAAI;;;;kBAAvC,aAA+C;oBAA3C,IAAI,EAAC,KAAK;oBAAC,OAAO,EAAC,QAAQ;sCAAI,IAAI;;;;YA7D/D,GAAA;;;QAAA;;;yBAwDoB,aAMmB,iBA9DvC,YAyDuC,CAAC,EAzDxC,CAyD+B,IAAI;mBADf,aAMmB;cAJd,GAAG,EAAE,IAAI;cACV,KAAqB,EAArB,kBAAqB;;cA3D7C,kBA6DwB,CAA+C;gBAA/C,aAA+C;kBAA3C,IAAI,EAAC,KAAK;kBAAC,OAAO,EAAC,QAAQ;oCAAI,IAAI;;cA7D/D,GAAA;;;;;;IAAA,GAAA;;EAAA",
+        "sourcesContent": [
+          "<template>\n    <div class=\"page\">\n        <div class=\"left-side\">\n            <div style=\"text-align: center; width: 100%\">\n                <h1>Welcome back</h1>\n                <p>\n                    <strong>&nbsp;</strong>\n                </p>\n                <div\n                    style=\"\n                        width: 80%;\n                        min-width: 300px;\n                        max-width: 400px;\n                        margin: auto;\n                        height: 500px;\n                        text-align: left;\n                    \"\n                >\n                    <FormKit type=\"form\" submit-label=\"Login\">\n                        <FormKit\n                            type=\"text\"\n                            name=\"email\"\n                            label=\"Your email\"\n                            placeholder=\"jane@example.com\"\n                            validation=\"required|email\"\n                        />\n                        <FormKit\n                            type=\"password\"\n                            name=\"password\"\n                            label=\"Password\"\n                            placeholder=\"Your password\"\n                            validation=\"required\"\n                        />\n                    </FormKit>\n                    <div class=\"footer\">\n                        <el-button link>Lost password</el-button>\n                    </div>\n                    <div style=\"margin-top: 50px\">\n                        <el-button size=\"large\">GitHub Login</el-button>\n                        <el-button size=\"large\">Google Login</el-button>\n                        <el-button size=\"large\">Microsoft</el-button>\n                    </div>\n                </div>\n                <p>PURISTA VOYAGE allows you to document,</p>\n            </div>\n        </div>\n        <div class=\"right-side\">\n            <div style=\"text-align: center; width: 100%\">\n                <h1>\n                    PURISTA\n                    <span class=\"headline-primary\">VOYAGE</span>\n                </h1>\n                <p>\n                    <strong>Start your visual journey now.</strong>\n                </p>\n                <el-carousel :interval=\"5000\" arrow=\"always\" height=\"auto\">\n                    <el-carousel-item\n                        v-for=\"item in 4\"\n                        :key=\"item\"\n                        style=\"height: 500px\"\n                    >\n                        <h3 text=\"2xl\" justify=\"center\">{{ item }}</h3>\n                    </el-carousel-item>\n                </el-carousel>\n                <p>PURISTA VOYAGE allows you to document,</p>\n            </div>\n        </div>\n    </div>\n</template>\n\n<style scoped>\n.page {\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n}\n\n.page > * {\n    flex-grow: 1;\n    flex-basis: 400px;\n}\n\n.left-side {\n    min-height: 100vh;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: center;\n}\n\n.right-side {\n    background-color: var(--el-fill-color);\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: center;\n}\n\n.headline-primary {\n    color: var(--el-color-primary) !important;\n}\n\n.footer {\n    text-align: right;\n}\n\n.el-card.is-always-shadow {\n    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\n}\n\n.el-carousel__item h3 {\n    color: #475669;\n    opacity: 0.75;\n    line-height: 300px;\n    margin: 0;\n    text-align: center;\n}\n\n.el-carousel__item:nth-child(2n) {\n    background-color: #99a9bf;\n}\n\n.el-carousel__item:nth-child(2n + 1) {\n    background-color: #d3dce6;\n}\n</style>\n"
+        ]
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918798,
+      "end": 1709718918798,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "const _sfc_main = {};\nimport { resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \"vue\";\nimport { ssrRenderComponent as _ssrRenderComponent, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate, ssrRenderList as _ssrRenderList } from \"vue/server-renderer\";\nfunction _sfc_ssrRender(_ctx, _push, _parent, _attrs) {\n  const _component_FormKit = _resolveComponent(\"FormKit\");\n  const _component_el_button = _resolveComponent(\"el-button\");\n  const _component_el_carousel = _resolveComponent(\"el-carousel\");\n  const _component_el_carousel_item = _resolveComponent(\"el-carousel-item\");\n  _push(`<div${_ssrRenderAttrs(_mergeProps({ class: \"page\" }, _attrs))} data-v-5d9a05bc><div class=\"left-side\" data-v-5d9a05bc><div style=\"${_ssrRenderStyle({ \"text-align\": \"center\", \"width\": \"100%\" })}\" data-v-5d9a05bc><h1 data-v-5d9a05bc>Welcome back</h1><p data-v-5d9a05bc><strong data-v-5d9a05bc> </strong></p><div style=\"${_ssrRenderStyle({ \"width\": \"80%\", \"min-width\": \"300px\", \"max-width\": \"400px\", \"margin\": \"auto\", \"height\": \"500px\", \"text-align\": \"left\" })}\" data-v-5d9a05bc>`);\n  _push(_ssrRenderComponent(_component_FormKit, {\n    type: \"form\",\n    \"submit-label\": \"Login\"\n  }, {\n    default: _withCtx((_, _push2, _parent2, _scopeId) => {\n      if (_push2) {\n        _push2(_ssrRenderComponent(_component_FormKit, {\n          type: \"text\",\n          name: \"email\",\n          label: \"Your email\",\n          placeholder: \"jane@example.com\",\n          validation: \"required|email\"\n        }, null, _parent2, _scopeId));\n        _push2(_ssrRenderComponent(_component_FormKit, {\n          type: \"password\",\n          name: \"password\",\n          label: \"Password\",\n          placeholder: \"Your password\",\n          validation: \"required\"\n        }, null, _parent2, _scopeId));\n      } else {\n        return [\n          _createVNode(_component_FormKit, {\n            type: \"text\",\n            name: \"email\",\n            label: \"Your email\",\n            placeholder: \"jane@example.com\",\n            validation: \"required|email\"\n          }),\n          _createVNode(_component_FormKit, {\n            type: \"password\",\n            name: \"password\",\n            label: \"Password\",\n            placeholder: \"Your password\",\n            validation: \"required\"\n          })\n        ];\n      }\n    }),\n    _: 1\n  }, _parent));\n  _push(`<div class=\"footer\" data-v-5d9a05bc>`);\n  _push(_ssrRenderComponent(_component_el_button, { link: \"\" }, {\n    default: _withCtx((_, _push2, _parent2, _scopeId) => {\n      if (_push2) {\n        _push2(`Lost password`);\n      } else {\n        return [\n          _createTextVNode(\"Lost password\")\n        ];\n      }\n    }),\n    _: 1\n  }, _parent));\n  _push(`</div><div style=\"${_ssrRenderStyle({ \"margin-top\": \"50px\" })}\" data-v-5d9a05bc>`);\n  _push(_ssrRenderComponent(_component_el_button, { size: \"large\" }, {\n    default: _withCtx((_, _push2, _parent2, _scopeId) => {\n      if (_push2) {\n        _push2(`GitHub Login`);\n      } else {\n        return [\n          _createTextVNode(\"GitHub Login\")\n        ];\n      }\n    }),\n    _: 1\n  }, _parent));\n  _push(_ssrRenderComponent(_component_el_button, { size: \"large\" }, {\n    default: _withCtx((_, _push2, _parent2, _scopeId) => {\n      if (_push2) {\n        _push2(`Google Login`);\n      } else {\n        return [\n          _createTextVNode(\"Google Login\")\n        ];\n      }\n    }),\n    _: 1\n  }, _parent));\n  _push(_ssrRenderComponent(_component_el_button, { size: \"large\" }, {\n    default: _withCtx((_, _push2, _parent2, _scopeId) => {\n      if (_push2) {\n        _push2(`Microsoft`);\n      } else {\n        return [\n          _createTextVNode(\"Microsoft\")\n        ];\n      }\n    }),\n    _: 1\n  }, _parent));\n  _push(`</div></div><p data-v-5d9a05bc>PURISTA VOYAGE allows you to document,</p></div></div><div class=\"right-side\" data-v-5d9a05bc><div style=\"${_ssrRenderStyle({ \"text-align\": \"center\", \"width\": \"100%\" })}\" data-v-5d9a05bc><h1 data-v-5d9a05bc> PURISTA <span class=\"headline-primary\" data-v-5d9a05bc>VOYAGE</span></h1><p data-v-5d9a05bc><strong data-v-5d9a05bc>Start your visual journey now.</strong></p>`);\n  _push(_ssrRenderComponent(_component_el_carousel, {\n    interval: 5e3,\n    arrow: \"always\",\n    height: \"auto\"\n  }, {\n    default: _withCtx((_, _push2, _parent2, _scopeId) => {\n      if (_push2) {\n        _push2(`<!--[-->`);\n        _ssrRenderList(4, (item) => {\n          _push2(_ssrRenderComponent(_component_el_carousel_item, {\n            key: item,\n            style: { \"height\": \"500px\" }\n          }, {\n            default: _withCtx((_2, _push3, _parent3, _scopeId2) => {\n              if (_push3) {\n                _push3(`<h3 text=\"2xl\" justify=\"center\" data-v-5d9a05bc${_scopeId2}>${_ssrInterpolate(item)}</h3>`);\n              } else {\n                return [\n                  _createVNode(\"h3\", {\n                    text: \"2xl\",\n                    justify: \"center\"\n                  }, _toDisplayString(item), 1)\n                ];\n              }\n            }),\n            _: 2\n          }, _parent2, _scopeId));\n        });\n        _push2(`<!--]-->`);\n      } else {\n        return [\n          (_openBlock(), _createBlock(_Fragment, null, _renderList(4, (item) => {\n            return _createVNode(_component_el_carousel_item, {\n              key: item,\n              style: { \"height\": \"500px\" }\n            }, {\n              default: _withCtx(() => [\n                _createVNode(\"h3\", {\n                  text: \"2xl\",\n                  justify: \"center\"\n                }, _toDisplayString(item), 1)\n              ]),\n              _: 2\n            }, 1024);\n          }), 64))\n        ];\n      }\n    }),\n    _: 1\n  }, _parent));\n  _push(`<p data-v-5d9a05bc>PURISTA VOYAGE allows you to document,</p></div></div></div>`);\n}\nimport \"/Users/sebastianwessel/projekte/voyage/pages/index.vue?vue&type=style&index=0&scoped=5d9a05bc&lang.css\";\nimport { useSSRContext as __vite_useSSRContext } from \"vue\";\nconst _sfc_setup = _sfc_main.setup;\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext();\n  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add(\"pages/index.vue\");\n  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;\n};\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"ssrRender\", _sfc_ssrRender], [\"__scopeId\", \"data-v-5d9a05bc\"]]);\n",
+      "start": 1709718918798,
+      "end": 1709718919261,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/pages/index.vue?macro=true\"],\n  \"sourcesContent\": [\"const _sfc_main = {}\\nimport { resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, createTextVNode as _createTextVNode, toDisplayString as _toDisplayString, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createBlock as _createBlock, mergeProps as _mergeProps } from \\\"vue\\\"\\nimport { ssrRenderComponent as _ssrRenderComponent, ssrRenderStyle as _ssrRenderStyle, ssrRenderAttrs as _ssrRenderAttrs, ssrInterpolate as _ssrInterpolate, ssrRenderList as _ssrRenderList } from \\\"vue/server-renderer\\\"\\n\\nfunction _sfc_ssrRender(_ctx, _push, _parent, _attrs) {\\n  const _component_FormKit = _resolveComponent(\\\"FormKit\\\")\\n  const _component_el_button = _resolveComponent(\\\"el-button\\\")\\n  const _component_el_carousel = _resolveComponent(\\\"el-carousel\\\")\\n  const _component_el_carousel_item = _resolveComponent(\\\"el-carousel-item\\\")\\n\\n  _push(`<div${\\n    _ssrRenderAttrs(_mergeProps({ class: \\\"page\\\" }, _attrs))\\n  } data-v-5d9a05bc><div class=\\\"left-side\\\" data-v-5d9a05bc><div style=\\\"${\\n    _ssrRenderStyle({\\\"text-align\\\":\\\"center\\\",\\\"width\\\":\\\"100%\\\"})\\n  }\\\" data-v-5d9a05bc><h1 data-v-5d9a05bc>Welcome back</h1><p data-v-5d9a05bc><strong data-v-5d9a05bc> </strong></p><div style=\\\"${\\n    _ssrRenderStyle({\\\"width\\\":\\\"80%\\\",\\\"min-width\\\":\\\"300px\\\",\\\"max-width\\\":\\\"400px\\\",\\\"margin\\\":\\\"auto\\\",\\\"height\\\":\\\"500px\\\",\\\"text-align\\\":\\\"left\\\"})\\n  }\\\" data-v-5d9a05bc>`)\\n  _push(_ssrRenderComponent(_component_FormKit, {\\n    type: \\\"form\\\",\\n    \\\"submit-label\\\": \\\"Login\\\"\\n  }, {\\n    default: _withCtx((_, _push, _parent, _scopeId) => {\\n      if (_push) {\\n        _push(_ssrRenderComponent(_component_FormKit, {\\n          type: \\\"text\\\",\\n          name: \\\"email\\\",\\n          label: \\\"Your email\\\",\\n          placeholder: \\\"jane@example.com\\\",\\n          validation: \\\"required|email\\\"\\n        }, null, _parent, _scopeId))\\n        _push(_ssrRenderComponent(_component_FormKit, {\\n          type: \\\"password\\\",\\n          name: \\\"password\\\",\\n          label: \\\"Password\\\",\\n          placeholder: \\\"Your password\\\",\\n          validation: \\\"required\\\"\\n        }, null, _parent, _scopeId))\\n      } else {\\n        return [\\n          _createVNode(_component_FormKit, {\\n            type: \\\"text\\\",\\n            name: \\\"email\\\",\\n            label: \\\"Your email\\\",\\n            placeholder: \\\"jane@example.com\\\",\\n            validation: \\\"required|email\\\"\\n          }),\\n          _createVNode(_component_FormKit, {\\n            type: \\\"password\\\",\\n            name: \\\"password\\\",\\n            label: \\\"Password\\\",\\n            placeholder: \\\"Your password\\\",\\n            validation: \\\"required\\\"\\n          })\\n        ]\\n      }\\n    }),\\n    _: 1\\n  }, _parent))\\n  _push(`<div class=\\\"footer\\\" data-v-5d9a05bc>`)\\n  _push(_ssrRenderComponent(_component_el_button, { link: \\\"\\\" }, {\\n    default: _withCtx((_, _push, _parent, _scopeId) => {\\n      if (_push) {\\n        _push(`Lost password`)\\n      } else {\\n        return [\\n          _createTextVNode(\\\"Lost password\\\")\\n        ]\\n      }\\n    }),\\n    _: 1\\n  }, _parent))\\n  _push(`</div><div style=\\\"${_ssrRenderStyle({\\\"margin-top\\\":\\\"50px\\\"})}\\\" data-v-5d9a05bc>`)\\n  _push(_ssrRenderComponent(_component_el_button, { size: \\\"large\\\" }, {\\n    default: _withCtx((_, _push, _parent, _scopeId) => {\\n      if (_push) {\\n        _push(`GitHub Login`)\\n      } else {\\n        return [\\n          _createTextVNode(\\\"GitHub Login\\\")\\n        ]\\n      }\\n    }),\\n    _: 1\\n  }, _parent))\\n  _push(_ssrRenderComponent(_component_el_button, { size: \\\"large\\\" }, {\\n    default: _withCtx((_, _push, _parent, _scopeId) => {\\n      if (_push) {\\n        _push(`Google Login`)\\n      } else {\\n        return [\\n          _createTextVNode(\\\"Google Login\\\")\\n        ]\\n      }\\n    }),\\n    _: 1\\n  }, _parent))\\n  _push(_ssrRenderComponent(_component_el_button, { size: \\\"large\\\" }, {\\n    default: _withCtx((_, _push, _parent, _scopeId) => {\\n      if (_push) {\\n        _push(`Microsoft`)\\n      } else {\\n        return [\\n          _createTextVNode(\\\"Microsoft\\\")\\n        ]\\n      }\\n    }),\\n    _: 1\\n  }, _parent))\\n  _push(`</div></div><p data-v-5d9a05bc>PURISTA VOYAGE allows you to document,</p></div></div><div class=\\\"right-side\\\" data-v-5d9a05bc><div style=\\\"${_ssrRenderStyle({\\\"text-align\\\":\\\"center\\\",\\\"width\\\":\\\"100%\\\"})}\\\" data-v-5d9a05bc><h1 data-v-5d9a05bc> PURISTA <span class=\\\"headline-primary\\\" data-v-5d9a05bc>VOYAGE</span></h1><p data-v-5d9a05bc><strong data-v-5d9a05bc>Start your visual journey now.</strong></p>`)\\n  _push(_ssrRenderComponent(_component_el_carousel, {\\n    interval: 5000,\\n    arrow: \\\"always\\\",\\n    height: \\\"auto\\\"\\n  }, {\\n    default: _withCtx((_, _push, _parent, _scopeId) => {\\n      if (_push) {\\n        _push(`<!--[-->`)\\n        _ssrRenderList(4, (item) => {\\n          _push(_ssrRenderComponent(_component_el_carousel_item, {\\n            key: item,\\n            style: {\\\"height\\\":\\\"500px\\\"}\\n          }, {\\n            default: _withCtx((_, _push, _parent, _scopeId) => {\\n              if (_push) {\\n                _push(`<h3 text=\\\"2xl\\\" justify=\\\"center\\\" data-v-5d9a05bc${\\n                  _scopeId\\n                }>${\\n                  _ssrInterpolate(item)\\n                }</h3>`)\\n              } else {\\n                return [\\n                  _createVNode(\\\"h3\\\", {\\n                    text: \\\"2xl\\\",\\n                    justify: \\\"center\\\"\\n                  }, _toDisplayString(item), 1)\\n                ]\\n              }\\n            }),\\n            _: 2\\n          }, _parent, _scopeId))\\n        })\\n        _push(`<!--]-->`)\\n      } else {\\n        return [\\n          (_openBlock(), _createBlock(_Fragment, null, _renderList(4, (item) => {\\n            return _createVNode(_component_el_carousel_item, {\\n              key: item,\\n              style: {\\\"height\\\":\\\"500px\\\"}\\n            }, {\\n              default: _withCtx(() => [\\n                _createVNode(\\\"h3\\\", {\\n                  text: \\\"2xl\\\",\\n                  justify: \\\"center\\\"\\n                }, _toDisplayString(item), 1)\\n              ]),\\n              _: 2\\n            }, 1024)\\n          }), 64))\\n        ]\\n      }\\n    }),\\n    _: 1\\n  }, _parent))\\n  _push(`<p data-v-5d9a05bc>PURISTA VOYAGE allows you to document,</p></div></div></div>`)\\n}\\n\\nimport \\\"/Users/sebastianwessel/projekte/voyage/pages/index.vue?vue&type=style&index=0&scoped=5d9a05bc&lang.css\\\"\\n\\nimport { useSSRContext as __vite_useSSRContext } from 'vue'\\nconst _sfc_setup = _sfc_main.setup\\n_sfc_main.setup = (props, ctx) => {\\n  const ssrContext = __vite_useSSRContext()\\n  ;(ssrContext.modules || (ssrContext.modules = new Set())).add(\\\"pages/index.vue\\\")\\n  return _sfc_setup ? _sfc_setup(props, ctx) : undefined\\n}\\nimport _export_sfc from '\\u0000plugin-vue:export-helper'\\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['ssrRender',_sfc_ssrRender],['__scopeId',\\\"data-v-5d9a05bc\\\"]])\"],\n  \"mappings\": \"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\",\n  \"names\": [\"_push\", \"_parent\", \"_\", \"_scopeId\"]\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919261,
+      "end": 1709718919261,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919261,
+      "end": 1709718919262,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919261,
+      "end": 1709718919262,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919262,
+      "end": 1709718919262,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919262,
+      "end": 1709718919262,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1709718919262,
+      "end": 1709718919263,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;"
+      }
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1709718919262,
+      "end": 1709718919263,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;"
+      }
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718919263,
+      "end": 1709718919263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718919263,
+      "end": 1709718919263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718919263,
+      "end": 1709718919263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718919263,
+      "end": 1709718919263,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718919263,
+      "end": 1709718919263,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718919263,
+      "end": 1709718919263,
+      "order": "normal"
+    }
+  ]
+}

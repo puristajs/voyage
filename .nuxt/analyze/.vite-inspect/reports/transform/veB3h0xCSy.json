@@ -1,0 +1,222 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/@formkit/dev/dist/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { errorHandler, warningHandler } from '@formkit/core';\n\n// packages/dev/src/index.ts\nvar errors = {\n  /**\n   * FormKit errors:\n   */\n  100: ({ data: node }) => `Only groups, lists, and forms can have children (${node.name}).`,\n  101: ({ data: node }) => `You cannot directly modify the store (${node.name}). See: https://formkit.com/advanced/core#message-store`,\n  102: ({\n    data: [node, property]\n  }) => `You cannot directly assign node.${property} (${node.name})`,\n  103: ({ data: [operator] }) => `Schema expressions cannot start with an operator (${operator})`,\n  104: ({ data: [operator, expression] }) => `Schema expressions cannot end with an operator (${operator} in \"${expression}\")`,\n  105: ({ data: expression }) => `Invalid schema expression: ${expression}`,\n  106: ({ data: name }) => `Cannot submit because (${name}) is not in a form.`,\n  107: ({ data: [node, value] }) => `Cannot set ${node.name} to non object value: ${value}`,\n  108: ({ data: [node, value] }) => `Cannot set ${node.name} to non array value: ${value}`,\n  /**\n   * Input specific errors:\n   */\n  300: ({ data: [node] }) => `Cannot set behavior prop to overscroll (on ${node.name} input) when options prop is a function.`,\n  /**\n   * FormKit vue errors:\n   */\n  600: ({ data: node }) => `Unknown input type${typeof node.props.type === \"string\" ? ' \"' + node.props.type + '\"' : \"\"} (\"${node.name}\")`,\n  601: ({ data: node }) => `Input definition${typeof node.props.type === \"string\" ? ' \"' + node.props.type + '\"' : \"\"} is missing a schema or component property (${node.name}).`\n};\nvar warnings = {\n  /**\n   * Core warnings:\n   */\n  150: ({ data: fn }) => `Schema function \"${fn}()\" is not a valid function.`,\n  151: ({ data: id }) => `No form element with id: ${id}`,\n  152: ({ data: id }) => `No input element with id: ${id}`,\n  /**\n   * Input specific warnings:\n   */\n  350: ({\n    data: { node, inputType }\n  }) => `Invalid options prop for ${node.name} input (${inputType}). See https://formkit.com/inputs/${inputType}`,\n  /**\n   * Vue warnings:\n   */\n  650: 'Schema \"$get()\" must use the id of an input to access.',\n  651: ({ data: id }) => `Cannot setErrors() on \"${id}\" because no such id exists.`,\n  652: ({ data: id }) => `Cannot clearErrors() on \"${id}\" because no such id exists.`,\n  /**\n   * Deprecation warnings:\n   */\n  800: ({ data: name }) => `${name} is deprecated.`\n};\nvar decodeErrors = (error, next) => {\n  if (error.code in errors) {\n    const err = errors[error.code];\n    error.message = typeof err === \"function\" ? err(error) : err;\n  }\n  return next(error);\n};\nvar registered = false;\nfunction register() {\n  if (!registered) {\n    errorHandler(decodeErrors);\n    warningHandler(decodeWarnings);\n    registered = true;\n  }\n}\nvar decodeWarnings = (warning, next) => {\n  if (warning.code in warnings) {\n    const warn = warnings[warning.code];\n    warning.message = typeof warn === \"function\" ? warn(warning) : warn;\n  }\n  return next(warning);\n};\n\nexport { errors, register, warnings };\n//# sourceMappingURL=out.js.map\n//# sourceMappingURL=index.mjs.map",
+      "start": 1709718916285,
+      "end": 1709718916368,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718916368,
+      "end": 1709718916368,
+      "order": "normal"
+    }
+  ]
+}

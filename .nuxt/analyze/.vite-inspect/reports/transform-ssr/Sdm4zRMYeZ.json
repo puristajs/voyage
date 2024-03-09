@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/directives/trap-focus/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { nextTick } from 'vue';\nimport '../../utils/index.mjs';\nimport '../../constants/index.mjs';\nimport { EVENT_CODE } from '../../constants/aria.mjs';\nimport { obtainAllFocusableElements } from '../../utils/dom/aria.mjs';\n\nconst FOCUSABLE_CHILDREN = \"_trap-focus-children\";\nconst TRAP_FOCUS_HANDLER = \"_trap-focus-handler\";\nconst FOCUS_STACK = [];\nconst FOCUS_HANDLER = (e) => {\n  var _a;\n  if (FOCUS_STACK.length === 0)\n    return;\n  const focusableElement = FOCUS_STACK[FOCUS_STACK.length - 1][FOCUSABLE_CHILDREN];\n  if (focusableElement.length > 0 && e.code === EVENT_CODE.tab) {\n    if (focusableElement.length === 1) {\n      e.preventDefault();\n      if (document.activeElement !== focusableElement[0]) {\n        focusableElement[0].focus();\n      }\n      return;\n    }\n    const goingBackward = e.shiftKey;\n    const isFirst = e.target === focusableElement[0];\n    const isLast = e.target === focusableElement[focusableElement.length - 1];\n    if (isFirst && goingBackward) {\n      e.preventDefault();\n      focusableElement[focusableElement.length - 1].focus();\n    }\n    if (isLast && !goingBackward) {\n      e.preventDefault();\n      focusableElement[0].focus();\n    }\n    if (process.env.NODE_ENV === \"test\") {\n      const index = focusableElement.indexOf(e.target);\n      if (index !== -1) {\n        (_a = focusableElement[goingBackward ? index - 1 : index + 1]) == null ? void 0 : _a.focus();\n      }\n    }\n  }\n};\nconst TrapFocus = {\n  beforeMount(el) {\n    el[FOCUSABLE_CHILDREN] = obtainAllFocusableElements(el);\n    FOCUS_STACK.push(el);\n    if (FOCUS_STACK.length <= 1) {\n      document.addEventListener(\"keydown\", FOCUS_HANDLER);\n    }\n  },\n  updated(el) {\n    nextTick(() => {\n      el[FOCUSABLE_CHILDREN] = obtainAllFocusableElements(el);\n    });\n  },\n  unmounted() {\n    FOCUS_STACK.shift();\n    if (FOCUS_STACK.length === 0) {\n      document.removeEventListener(\"keydown\", FOCUS_HANDLER);\n    }\n  }\n};\n\nexport { FOCUSABLE_CHILDREN, TRAP_FOCUS_HANDLER, TrapFocus as default };\n//# sourceMappingURL=index.mjs.map\n",
+      "start": 1709718918434,
+      "end": 1709718918481,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918481,
+      "end": 1709718918481,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { nextTick } from \"vue\";\nimport \"../../utils/index.mjs\";\nimport \"../../constants/index.mjs\";\nimport { EVENT_CODE } from \"../../constants/aria.mjs\";\nimport { obtainAllFocusableElements } from \"../../utils/dom/aria.mjs\";\nconst FOCUSABLE_CHILDREN = \"_trap-focus-children\";\nconst TRAP_FOCUS_HANDLER = \"_trap-focus-handler\";\nconst FOCUS_STACK = [];\nconst FOCUS_HANDLER = (e) => {\n  var _a;\n  if (FOCUS_STACK.length === 0)\n    return;\n  const focusableElement = FOCUS_STACK[FOCUS_STACK.length - 1][FOCUSABLE_CHILDREN];\n  if (focusableElement.length > 0 && e.code === EVENT_CODE.tab) {\n    if (focusableElement.length === 1) {\n      e.preventDefault();\n      if ((void 0).activeElement !== focusableElement[0]) {\n        focusableElement[0].focus();\n      }\n      return;\n    }\n    const goingBackward = e.shiftKey;\n    const isFirst = e.target === focusableElement[0];\n    const isLast = e.target === focusableElement[focusableElement.length - 1];\n    if (isFirst && goingBackward) {\n      e.preventDefault();\n      focusableElement[focusableElement.length - 1].focus();\n    }\n    if (isLast && !goingBackward) {\n      e.preventDefault();\n      focusableElement[0].focus();\n    }\n    if (process.env.NODE_ENV === \"test\") {\n      const index = focusableElement.indexOf(e.target);\n      if (index !== -1) {\n        (_a = focusableElement[goingBackward ? index - 1 : index + 1]) == null ? void 0 : _a.focus();\n      }\n    }\n  }\n};\nconst TrapFocus = {\n  beforeMount(el) {\n    el[FOCUSABLE_CHILDREN] = obtainAllFocusableElements(el);\n    FOCUS_STACK.push(el);\n    if (FOCUS_STACK.length <= 1) {\n      (void 0).addEventListener(\"keydown\", FOCUS_HANDLER);\n    }\n  },\n  updated(el) {\n    nextTick(() => {\n      el[FOCUSABLE_CHILDREN] = obtainAllFocusableElements(el);\n    });\n  },\n  unmounted() {\n    FOCUS_STACK.shift();\n    if (FOCUS_STACK.length === 0) {\n      (void 0).removeEventListener(\"keydown\", FOCUS_HANDLER);\n    }\n  }\n};\nexport { FOCUSABLE_CHILDREN, TRAP_FOCUS_HANDLER, TrapFocus as default };\n",
+      "start": 1709718918481,
+      "end": 1709718918541,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/directives/trap-focus/index.mjs\"],\n  \"sourcesContent\": [\"import { nextTick } from 'vue';\\nimport '../../utils/index.mjs';\\nimport '../../constants/index.mjs';\\nimport { EVENT_CODE } from '../../constants/aria.mjs';\\nimport { obtainAllFocusableElements } from '../../utils/dom/aria.mjs';\\n\\nconst FOCUSABLE_CHILDREN = \\\"_trap-focus-children\\\";\\nconst TRAP_FOCUS_HANDLER = \\\"_trap-focus-handler\\\";\\nconst FOCUS_STACK = [];\\nconst FOCUS_HANDLER = (e) => {\\n  var _a;\\n  if (FOCUS_STACK.length === 0)\\n    return;\\n  const focusableElement = FOCUS_STACK[FOCUS_STACK.length - 1][FOCUSABLE_CHILDREN];\\n  if (focusableElement.length > 0 && e.code === EVENT_CODE.tab) {\\n    if (focusableElement.length === 1) {\\n      e.preventDefault();\\n      if (document.activeElement !== focusableElement[0]) {\\n        focusableElement[0].focus();\\n      }\\n      return;\\n    }\\n    const goingBackward = e.shiftKey;\\n    const isFirst = e.target === focusableElement[0];\\n    const isLast = e.target === focusableElement[focusableElement.length - 1];\\n    if (isFirst && goingBackward) {\\n      e.preventDefault();\\n      focusableElement[focusableElement.length - 1].focus();\\n    }\\n    if (isLast && !goingBackward) {\\n      e.preventDefault();\\n      focusableElement[0].focus();\\n    }\\n    if (process.env.NODE_ENV === \\\"test\\\") {\\n      const index = focusableElement.indexOf(e.target);\\n      if (index !== -1) {\\n        (_a = focusableElement[goingBackward ? index - 1 : index + 1]) == null ? void 0 : _a.focus();\\n      }\\n    }\\n  }\\n};\\nconst TrapFocus = {\\n  beforeMount(el) {\\n    el[FOCUSABLE_CHILDREN] = obtainAllFocusableElements(el);\\n    FOCUS_STACK.push(el);\\n    if (FOCUS_STACK.length <= 1) {\\n      document.addEventListener(\\\"keydown\\\", FOCUS_HANDLER);\\n    }\\n  },\\n  updated(el) {\\n    nextTick(() => {\\n      el[FOCUSABLE_CHILDREN] = obtainAllFocusableElements(el);\\n    });\\n  },\\n  unmounted() {\\n    FOCUS_STACK.shift();\\n    if (FOCUS_STACK.length === 0) {\\n      document.removeEventListener(\\\"keydown\\\", FOCUS_HANDLER);\\n    }\\n  }\\n};\\n\\nexport { FOCUSABLE_CHILDREN, TRAP_FOCUS_HANDLER, TrapFocus as default };\\n//# sourceMappingURL=index.mjs.map\\n\"],\n  \"mappings\": \"AAAA,SAAS,gBAAgB;AACzB,OAAO;AACP,OAAO;AACP,SAAS,kBAAkB;AAC3B,SAAS,kCAAkC;AAE3C,MAAM,qBAAqB;AAC3B,MAAM,qBAAqB;AAC3B,MAAM,cAAc,CAAC;AACrB,MAAM,gBAAgB,CAAC,MAAM;AAC3B,MAAI;AACJ,MAAI,YAAY,WAAW;AACzB;AACF,QAAM,mBAAmB,YAAY,YAAY,SAAS,CAAC,EAAE,kBAAkB;AAC/E,MAAI,iBAAiB,SAAS,KAAK,EAAE,SAAS,WAAW,KAAK;AAC5D,QAAI,iBAAiB,WAAW,GAAG;AACjC,QAAE,eAAe;AACjB,UAAI,SAAS,kBAAkB,iBAAiB,CAAC,GAAG;AAClD,yBAAiB,CAAC,EAAE,MAAM;AAAA,MAC5B;AACA;AAAA,IACF;AACA,UAAM,gBAAgB,EAAE;AACxB,UAAM,UAAU,EAAE,WAAW,iBAAiB,CAAC;AAC/C,UAAM,SAAS,EAAE,WAAW,iBAAiB,iBAAiB,SAAS,CAAC;AACxE,QAAI,WAAW,eAAe;AAC5B,QAAE,eAAe;AACjB,uBAAiB,iBAAiB,SAAS,CAAC,EAAE,MAAM;AAAA,IACtD;AACA,QAAI,UAAU,CAAC,eAAe;AAC5B,QAAE,eAAe;AACjB,uBAAiB,CAAC,EAAE,MAAM;AAAA,IAC5B;AACA,QAAI,QAAQ,IAAI,aAAa,QAAQ;AACnC,YAAM,QAAQ,iBAAiB,QAAQ,EAAE,MAAM;AAC/C,UAAI,UAAU,IAAI;AAChB,SAAC,KAAK,iBAAiB,gBAAgB,QAAQ,IAAI,QAAQ,CAAC,MAAM,OAAO,SAAS,GAAG,MAAM;AAAA,MAC7F;AAAA,IACF;AAAA,EACF;AACF;AACA,MAAM,YAAY;AAAA,EAChB,YAAY,IAAI;AACd,OAAG,kBAAkB,IAAI,2BAA2B,EAAE;AACtD,gBAAY,KAAK,EAAE;AACnB,QAAI,YAAY,UAAU,GAAG;AAC3B,eAAS,iBAAiB,WAAW,aAAa;AAAA,IACpD;AAAA,EACF;AAAA,EACA,QAAQ,IAAI;AACV,aAAS,MAAM;AACb,SAAG,kBAAkB,IAAI,2BAA2B,EAAE;AAAA,IACxD,CAAC;AAAA,EACH;AAAA,EACA,YAAY;AACV,gBAAY,MAAM;AAClB,QAAI,YAAY,WAAW,GAAG;AAC5B,eAAS,oBAAoB,WAAW,aAAa;AAAA,IACvD;AAAA,EACF;AACF;AAEA,SAAS,oBAAoB,oBAAoB,aAAa;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918541,
+      "end": 1709718918541,
+      "order": "normal"
+    }
+  ]
+}

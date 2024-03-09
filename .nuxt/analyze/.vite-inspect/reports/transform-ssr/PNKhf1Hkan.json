@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/color-picker/src/utils/draggable.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import '../../../../utils/index.mjs';\nimport { isClient } from '@vueuse/core';\n\nlet isDragging = false;\nfunction draggable(element, options) {\n  if (!isClient)\n    return;\n  const moveFn = function(event) {\n    var _a;\n    (_a = options.drag) == null ? void 0 : _a.call(options, event);\n  };\n  const upFn = function(event) {\n    var _a;\n    document.removeEventListener(\"mousemove\", moveFn);\n    document.removeEventListener(\"mouseup\", upFn);\n    document.removeEventListener(\"touchmove\", moveFn);\n    document.removeEventListener(\"touchend\", upFn);\n    document.onselectstart = null;\n    document.ondragstart = null;\n    isDragging = false;\n    (_a = options.end) == null ? void 0 : _a.call(options, event);\n  };\n  const downFn = function(event) {\n    var _a;\n    if (isDragging)\n      return;\n    event.preventDefault();\n    document.onselectstart = () => false;\n    document.ondragstart = () => false;\n    document.addEventListener(\"mousemove\", moveFn);\n    document.addEventListener(\"mouseup\", upFn);\n    document.addEventListener(\"touchmove\", moveFn);\n    document.addEventListener(\"touchend\", upFn);\n    isDragging = true;\n    (_a = options.start) == null ? void 0 : _a.call(options, event);\n  };\n  element.addEventListener(\"mousedown\", downFn);\n  element.addEventListener(\"touchstart\", downFn);\n}\n\nexport { draggable };\n//# sourceMappingURL=draggable.mjs.map\n",
+      "start": 1709718918948,
+      "end": 1709718918965,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918965,
+      "end": 1709718918965,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918966,
+      "end": 1709718918966,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918966,
+      "end": 1709718918966,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918966,
+      "end": 1709718918966,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918966,
+      "end": 1709718918966,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918966,
+      "end": 1709718918966,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import \"../../../../utils/index.mjs\";\nimport { isClient } from \"@vueuse/core\";\nlet isDragging = false;\nfunction draggable(element, options) {\n  if (!isClient)\n    return;\n  const moveFn = function(event) {\n    var _a;\n    (_a = options.drag) == null ? void 0 : _a.call(options, event);\n  };\n  const upFn = function(event) {\n    var _a;\n    (void 0).removeEventListener(\"mousemove\", moveFn);\n    (void 0).removeEventListener(\"mouseup\", upFn);\n    (void 0).removeEventListener(\"touchmove\", moveFn);\n    (void 0).removeEventListener(\"touchend\", upFn);\n    (void 0).onselectstart = null;\n    (void 0).ondragstart = null;\n    isDragging = false;\n    (_a = options.end) == null ? void 0 : _a.call(options, event);\n  };\n  const downFn = function(event) {\n    var _a;\n    if (isDragging)\n      return;\n    event.preventDefault();\n    (void 0).onselectstart = () => false;\n    (void 0).ondragstart = () => false;\n    (void 0).addEventListener(\"mousemove\", moveFn);\n    (void 0).addEventListener(\"mouseup\", upFn);\n    (void 0).addEventListener(\"touchmove\", moveFn);\n    (void 0).addEventListener(\"touchend\", upFn);\n    isDragging = true;\n    (_a = options.start) == null ? void 0 : _a.call(options, event);\n  };\n  element.addEventListener(\"mousedown\", downFn);\n  element.addEventListener(\"touchstart\", downFn);\n}\nexport { draggable };\n",
+      "start": 1709718918966,
+      "end": 1709718919364,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/color-picker/src/utils/draggable.mjs\"],\n  \"sourcesContent\": [\"import '../../../../utils/index.mjs';\\nimport { isClient } from '@vueuse/core';\\n\\nlet isDragging = false;\\nfunction draggable(element, options) {\\n  if (!isClient)\\n    return;\\n  const moveFn = function(event) {\\n    var _a;\\n    (_a = options.drag) == null ? void 0 : _a.call(options, event);\\n  };\\n  const upFn = function(event) {\\n    var _a;\\n    document.removeEventListener(\\\"mousemove\\\", moveFn);\\n    document.removeEventListener(\\\"mouseup\\\", upFn);\\n    document.removeEventListener(\\\"touchmove\\\", moveFn);\\n    document.removeEventListener(\\\"touchend\\\", upFn);\\n    document.onselectstart = null;\\n    document.ondragstart = null;\\n    isDragging = false;\\n    (_a = options.end) == null ? void 0 : _a.call(options, event);\\n  };\\n  const downFn = function(event) {\\n    var _a;\\n    if (isDragging)\\n      return;\\n    event.preventDefault();\\n    document.onselectstart = () => false;\\n    document.ondragstart = () => false;\\n    document.addEventListener(\\\"mousemove\\\", moveFn);\\n    document.addEventListener(\\\"mouseup\\\", upFn);\\n    document.addEventListener(\\\"touchmove\\\", moveFn);\\n    document.addEventListener(\\\"touchend\\\", upFn);\\n    isDragging = true;\\n    (_a = options.start) == null ? void 0 : _a.call(options, event);\\n  };\\n  element.addEventListener(\\\"mousedown\\\", downFn);\\n  element.addEventListener(\\\"touchstart\\\", downFn);\\n}\\n\\nexport { draggable };\\n//# sourceMappingURL=draggable.mjs.map\\n\"],\n  \"mappings\": \"AAAA,OAAO;AACP,SAAS,gBAAgB;AAEzB,IAAI,aAAa;AACjB,SAAS,UAAU,SAAS,SAAS;AACnC,MAAI,CAAC;AACH;AACF,QAAM,SAAS,SAAS,OAAO;AAC7B,QAAI;AACJ,KAAC,KAAK,QAAQ,SAAS,OAAO,SAAS,GAAG,KAAK,SAAS,KAAK;AAAA,EAC/D;AACA,QAAM,OAAO,SAAS,OAAO;AAC3B,QAAI;AACJ,aAAS,oBAAoB,aAAa,MAAM;AAChD,aAAS,oBAAoB,WAAW,IAAI;AAC5C,aAAS,oBAAoB,aAAa,MAAM;AAChD,aAAS,oBAAoB,YAAY,IAAI;AAC7C,aAAS,gBAAgB;AACzB,aAAS,cAAc;AACvB,iBAAa;AACb,KAAC,KAAK,QAAQ,QAAQ,OAAO,SAAS,GAAG,KAAK,SAAS,KAAK;AAAA,EAC9D;AACA,QAAM,SAAS,SAAS,OAAO;AAC7B,QAAI;AACJ,QAAI;AACF;AACF,UAAM,eAAe;AACrB,aAAS,gBAAgB,MAAM;AAC/B,aAAS,cAAc,MAAM;AAC7B,aAAS,iBAAiB,aAAa,MAAM;AAC7C,aAAS,iBAAiB,WAAW,IAAI;AACzC,aAAS,iBAAiB,aAAa,MAAM;AAC7C,aAAS,iBAAiB,YAAY,IAAI;AAC1C,iBAAa;AACb,KAAC,KAAK,QAAQ,UAAU,OAAO,SAAS,GAAG,KAAK,SAAS,KAAK;AAAA,EAChE;AACA,UAAQ,iBAAiB,aAAa,MAAM;AAC5C,UAAQ,iBAAiB,cAAc,MAAM;AAC/C;AAEA,SAAS;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718919364,
+      "end": 1709718919364,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/utils/dom/aria.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex=\"-1\"]),input:not([disabled]),input:not([type=\"hidden\"]),select:not([disabled]),textarea:not([disabled])`;\nconst isVisible = (element) => {\n  if (process.env.NODE_ENV === \"test\")\n    return true;\n  const computed = getComputedStyle(element);\n  return computed.position === \"fixed\" ? false : element.offsetParent !== null;\n};\nconst obtainAllFocusableElements = (element) => {\n  return Array.from(element.querySelectorAll(FOCUSABLE_ELEMENT_SELECTORS)).filter((item) => isFocusable(item) && isVisible(item));\n};\nconst isFocusable = (element) => {\n  if (element.tabIndex > 0 || element.tabIndex === 0 && element.getAttribute(\"tabIndex\") !== null) {\n    return true;\n  }\n  if (element.disabled) {\n    return false;\n  }\n  switch (element.nodeName) {\n    case \"A\": {\n      return !!element.href && element.rel !== \"ignore\";\n    }\n    case \"INPUT\": {\n      return !(element.type === \"hidden\" || element.type === \"file\");\n    }\n    case \"BUTTON\":\n    case \"SELECT\":\n    case \"TEXTAREA\": {\n      return true;\n    }\n    default: {\n      return false;\n    }\n  }\n};\nconst attemptFocus = (element) => {\n  var _a;\n  if (!isFocusable(element)) {\n    return false;\n  }\n  (_a = element.focus) == null ? void 0 : _a.call(element);\n  return document.activeElement === element;\n};\nconst triggerEvent = function(elm, name, ...opts) {\n  let eventName;\n  if (name.includes(\"mouse\") || name.includes(\"click\")) {\n    eventName = \"MouseEvents\";\n  } else if (name.includes(\"key\")) {\n    eventName = \"KeyboardEvent\";\n  } else {\n    eventName = \"HTMLEvents\";\n  }\n  const evt = document.createEvent(eventName);\n  evt.initEvent(name, ...opts);\n  elm.dispatchEvent(evt);\n  return elm;\n};\nconst isLeaf = (el) => !el.getAttribute(\"aria-owns\");\nconst getSibling = (el, distance, elClass) => {\n  const { parentNode } = el;\n  if (!parentNode)\n    return null;\n  const siblings = parentNode.querySelectorAll(elClass);\n  const index = Array.prototype.indexOf.call(siblings, el);\n  return siblings[index + distance] || null;\n};\nconst focusNode = (el) => {\n  if (!el)\n    return;\n  el.focus();\n  !isLeaf(el) && el.click();\n};\n\nexport { attemptFocus, focusNode, getSibling, isFocusable, isLeaf, isVisible, obtainAllFocusableElements, triggerEvent };\n//# sourceMappingURL=aria.mjs.map\n",
+      "start": 1709718918789,
+      "end": 1709718918814,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918814,
+      "end": 1709718918814,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex=\"-1\"]),input:not([disabled]),input:not([type=\"hidden\"]),select:not([disabled]),textarea:not([disabled])`;\nconst isVisible = (element) => {\n  if (process.env.NODE_ENV === \"test\")\n    return true;\n  const computed = getComputedStyle(element);\n  return computed.position === \"fixed\" ? false : element.offsetParent !== null;\n};\nconst obtainAllFocusableElements = (element) => {\n  return Array.from(element.querySelectorAll(FOCUSABLE_ELEMENT_SELECTORS)).filter((item) => isFocusable(item) && isVisible(item));\n};\nconst isFocusable = (element) => {\n  if (element.tabIndex > 0 || element.tabIndex === 0 && element.getAttribute(\"tabIndex\") !== null) {\n    return true;\n  }\n  if (element.disabled) {\n    return false;\n  }\n  switch (element.nodeName) {\n    case \"A\": {\n      return !!element.href && element.rel !== \"ignore\";\n    }\n    case \"INPUT\": {\n      return !(element.type === \"hidden\" || element.type === \"file\");\n    }\n    case \"BUTTON\":\n    case \"SELECT\":\n    case \"TEXTAREA\": {\n      return true;\n    }\n    default: {\n      return false;\n    }\n  }\n};\nconst attemptFocus = (element) => {\n  var _a;\n  if (!isFocusable(element)) {\n    return false;\n  }\n  (_a = element.focus) == null ? void 0 : _a.call(element);\n  return (void 0).activeElement === element;\n};\nconst triggerEvent = function(elm, name, ...opts) {\n  let eventName;\n  if (name.includes(\"mouse\") || name.includes(\"click\")) {\n    eventName = \"MouseEvents\";\n  } else if (name.includes(\"key\")) {\n    eventName = \"KeyboardEvent\";\n  } else {\n    eventName = \"HTMLEvents\";\n  }\n  const evt = (void 0).createEvent(eventName);\n  evt.initEvent(name, ...opts);\n  elm.dispatchEvent(evt);\n  return elm;\n};\nconst isLeaf = (el) => !el.getAttribute(\"aria-owns\");\nconst getSibling = (el, distance, elClass) => {\n  const { parentNode } = el;\n  if (!parentNode)\n    return null;\n  const siblings = parentNode.querySelectorAll(elClass);\n  const index = Array.prototype.indexOf.call(siblings, el);\n  return siblings[index + distance] || null;\n};\nconst focusNode = (el) => {\n  if (!el)\n    return;\n  el.focus();\n  !isLeaf(el) && el.click();\n};\nexport { attemptFocus, focusNode, getSibling, isFocusable, isLeaf, isVisible, obtainAllFocusableElements, triggerEvent };\n",
+      "start": 1709718918814,
+      "end": 1709718919279,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/utils/dom/aria.mjs\"],\n  \"sourcesContent\": [\"const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex=\\\"-1\\\"]),input:not([disabled]),input:not([type=\\\"hidden\\\"]),select:not([disabled]),textarea:not([disabled])`;\\nconst isVisible = (element) => {\\n  if (process.env.NODE_ENV === \\\"test\\\")\\n    return true;\\n  const computed = getComputedStyle(element);\\n  return computed.position === \\\"fixed\\\" ? false : element.offsetParent !== null;\\n};\\nconst obtainAllFocusableElements = (element) => {\\n  return Array.from(element.querySelectorAll(FOCUSABLE_ELEMENT_SELECTORS)).filter((item) => isFocusable(item) && isVisible(item));\\n};\\nconst isFocusable = (element) => {\\n  if (element.tabIndex > 0 || element.tabIndex === 0 && element.getAttribute(\\\"tabIndex\\\") !== null) {\\n    return true;\\n  }\\n  if (element.disabled) {\\n    return false;\\n  }\\n  switch (element.nodeName) {\\n    case \\\"A\\\": {\\n      return !!element.href && element.rel !== \\\"ignore\\\";\\n    }\\n    case \\\"INPUT\\\": {\\n      return !(element.type === \\\"hidden\\\" || element.type === \\\"file\\\");\\n    }\\n    case \\\"BUTTON\\\":\\n    case \\\"SELECT\\\":\\n    case \\\"TEXTAREA\\\": {\\n      return true;\\n    }\\n    default: {\\n      return false;\\n    }\\n  }\\n};\\nconst attemptFocus = (element) => {\\n  var _a;\\n  if (!isFocusable(element)) {\\n    return false;\\n  }\\n  (_a = element.focus) == null ? void 0 : _a.call(element);\\n  return document.activeElement === element;\\n};\\nconst triggerEvent = function(elm, name, ...opts) {\\n  let eventName;\\n  if (name.includes(\\\"mouse\\\") || name.includes(\\\"click\\\")) {\\n    eventName = \\\"MouseEvents\\\";\\n  } else if (name.includes(\\\"key\\\")) {\\n    eventName = \\\"KeyboardEvent\\\";\\n  } else {\\n    eventName = \\\"HTMLEvents\\\";\\n  }\\n  const evt = document.createEvent(eventName);\\n  evt.initEvent(name, ...opts);\\n  elm.dispatchEvent(evt);\\n  return elm;\\n};\\nconst isLeaf = (el) => !el.getAttribute(\\\"aria-owns\\\");\\nconst getSibling = (el, distance, elClass) => {\\n  const { parentNode } = el;\\n  if (!parentNode)\\n    return null;\\n  const siblings = parentNode.querySelectorAll(elClass);\\n  const index = Array.prototype.indexOf.call(siblings, el);\\n  return siblings[index + distance] || null;\\n};\\nconst focusNode = (el) => {\\n  if (!el)\\n    return;\\n  el.focus();\\n  !isLeaf(el) && el.click();\\n};\\n\\nexport { attemptFocus, focusNode, getSibling, isFocusable, isLeaf, isVisible, obtainAllFocusableElements, triggerEvent };\\n//# sourceMappingURL=aria.mjs.map\\n\"],\n  \"mappings\": \"AAAA,MAAM,8BAA8B;AACpC,MAAM,YAAY,CAAC,YAAY;AAC7B,MAAI,QAAQ,IAAI,aAAa;AAC3B,WAAO;AACT,QAAM,WAAW,iBAAiB,OAAO;AACzC,SAAO,SAAS,aAAa,UAAU,QAAQ,QAAQ,iBAAiB;AAC1E;AACA,MAAM,6BAA6B,CAAC,YAAY;AAC9C,SAAO,MAAM,KAAK,QAAQ,iBAAiB,2BAA2B,CAAC,EAAE,OAAO,CAAC,SAAS,YAAY,IAAI,KAAK,UAAU,IAAI,CAAC;AAChI;AACA,MAAM,cAAc,CAAC,YAAY;AAC/B,MAAI,QAAQ,WAAW,KAAK,QAAQ,aAAa,KAAK,QAAQ,aAAa,UAAU,MAAM,MAAM;AAC/F,WAAO;AAAA,EACT;AACA,MAAI,QAAQ,UAAU;AACpB,WAAO;AAAA,EACT;AACA,UAAQ,QAAQ,UAAU;AAAA,IACxB,KAAK,KAAK;AACR,aAAO,CAAC,CAAC,QAAQ,QAAQ,QAAQ,QAAQ;AAAA,IAC3C;AAAA,IACA,KAAK,SAAS;AACZ,aAAO,EAAE,QAAQ,SAAS,YAAY,QAAQ,SAAS;AAAA,IACzD;AAAA,IACA,KAAK;AAAA,IACL,KAAK;AAAA,IACL,KAAK,YAAY;AACf,aAAO;AAAA,IACT;AAAA,IACA,SAAS;AACP,aAAO;AAAA,IACT;AAAA,EACF;AACF;AACA,MAAM,eAAe,CAAC,YAAY;AAChC,MAAI;AACJ,MAAI,CAAC,YAAY,OAAO,GAAG;AACzB,WAAO;AAAA,EACT;AACA,GAAC,KAAK,QAAQ,UAAU,OAAO,SAAS,GAAG,KAAK,OAAO;AACvD,SAAO,SAAS,kBAAkB;AACpC;AACA,MAAM,eAAe,SAAS,KAAK,SAAS,MAAM;AAChD,MAAI;AACJ,MAAI,KAAK,SAAS,OAAO,KAAK,KAAK,SAAS,OAAO,GAAG;AACpD,gBAAY;AAAA,EACd,WAAW,KAAK,SAAS,KAAK,GAAG;AAC/B,gBAAY;AAAA,EACd,OAAO;AACL,gBAAY;AAAA,EACd;AACA,QAAM,MAAM,SAAS,YAAY,SAAS;AAC1C,MAAI,UAAU,MAAM,GAAG,IAAI;AAC3B,MAAI,cAAc,GAAG;AACrB,SAAO;AACT;AACA,MAAM,SAAS,CAAC,OAAO,CAAC,GAAG,aAAa,WAAW;AACnD,MAAM,aAAa,CAAC,IAAI,UAAU,YAAY;AAC5C,QAAM,EAAE,WAAW,IAAI;AACvB,MAAI,CAAC;AACH,WAAO;AACT,QAAM,WAAW,WAAW,iBAAiB,OAAO;AACpD,QAAM,QAAQ,MAAM,UAAU,QAAQ,KAAK,UAAU,EAAE;AACvD,SAAO,SAAS,QAAQ,QAAQ,KAAK;AACvC;AACA,MAAM,YAAY,CAAC,OAAO;AACxB,MAAI,CAAC;AACH;AACF,KAAG,MAAM;AACT,GAAC,OAAO,EAAE,KAAK,GAAG,MAAM;AAC1B;AAEA,SAAS,cAAc,WAAW,YAAY,aAAa,QAAQ,WAAW,4BAA4B;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718919279,
+      "end": 1709718919279,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718919280,
+      "end": 1709718919280,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718919280,
+      "end": 1709718919280,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718919280,
+      "end": 1709718919280,
+      "order": "normal"
+    }
+  ]
+}

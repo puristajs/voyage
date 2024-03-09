@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/utils/types.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { isArray, isObject, isString } from '@vue/shared';\nexport { isArray, isDate, isFunction, isObject, isPromise, isString, isSymbol } from '@vue/shared';\nimport { isNil } from 'lodash-unified';\nexport { isVNode } from 'vue';\n\nconst isUndefined = (val) => val === void 0;\nconst isBoolean = (val) => typeof val === \"boolean\";\nconst isNumber = (val) => typeof val === \"number\";\nconst isEmpty = (val) => !val && val !== 0 || isArray(val) && val.length === 0 || isObject(val) && !Object.keys(val).length;\nconst isElement = (e) => {\n  if (typeof Element === \"undefined\")\n    return false;\n  return e instanceof Element;\n};\nconst isPropAbsent = (prop) => {\n  return isNil(prop);\n};\nconst isStringNumber = (val) => {\n  if (!isString(val)) {\n    return false;\n  }\n  return !Number.isNaN(Number(val));\n};\nconst isWindow = (val) => {\n  return val === window;\n};\n\nexport { isBoolean, isElement, isEmpty, isNumber, isPropAbsent, isStringNumber, isUndefined, isWindow };\n//# sourceMappingURL=types.mjs.map\n",
+      "start": 1709718918495,
+      "end": 1709718918515,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918515,
+      "end": 1709718918515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { isArray, isObject, isString } from \"@vue/shared\";\nexport { isArray, isDate, isFunction, isObject, isPromise, isString, isSymbol } from \"@vue/shared\";\nimport { isNil } from \"lodash-unified\";\nexport { isVNode } from \"vue\";\nconst isUndefined = (val) => val === void 0;\nconst isBoolean = (val) => typeof val === \"boolean\";\nconst isNumber = (val) => typeof val === \"number\";\nconst isEmpty = (val) => !val && val !== 0 || isArray(val) && val.length === 0 || isObject(val) && !Object.keys(val).length;\nconst isElement = (e) => {\n  if (typeof Element === \"undefined\")\n    return false;\n  return e instanceof Element;\n};\nconst isPropAbsent = (prop) => {\n  return isNil(prop);\n};\nconst isStringNumber = (val) => {\n  if (!isString(val)) {\n    return false;\n  }\n  return !Number.isNaN(Number(val));\n};\nconst isWindow = (val) => {\n  return val === void 0;\n};\nexport { isBoolean, isElement, isEmpty, isNumber, isPropAbsent, isStringNumber, isUndefined, isWindow };\n",
+      "start": 1709718918515,
+      "end": 1709718918597,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/utils/types.mjs\"],\n  \"sourcesContent\": [\"import { isArray, isObject, isString } from '@vue/shared';\\nexport { isArray, isDate, isFunction, isObject, isPromise, isString, isSymbol } from '@vue/shared';\\nimport { isNil } from 'lodash-unified';\\nexport { isVNode } from 'vue';\\n\\nconst isUndefined = (val) => val === void 0;\\nconst isBoolean = (val) => typeof val === \\\"boolean\\\";\\nconst isNumber = (val) => typeof val === \\\"number\\\";\\nconst isEmpty = (val) => !val && val !== 0 || isArray(val) && val.length === 0 || isObject(val) && !Object.keys(val).length;\\nconst isElement = (e) => {\\n  if (typeof Element === \\\"undefined\\\")\\n    return false;\\n  return e instanceof Element;\\n};\\nconst isPropAbsent = (prop) => {\\n  return isNil(prop);\\n};\\nconst isStringNumber = (val) => {\\n  if (!isString(val)) {\\n    return false;\\n  }\\n  return !Number.isNaN(Number(val));\\n};\\nconst isWindow = (val) => {\\n  return val === window;\\n};\\n\\nexport { isBoolean, isElement, isEmpty, isNumber, isPropAbsent, isStringNumber, isUndefined, isWindow };\\n//# sourceMappingURL=types.mjs.map\\n\"],\n  \"mappings\": \"AAAA,SAAS,SAAS,UAAU,gBAAgB;AAC5C,SAAS,SAAS,QAAQ,YAAY,UAAU,WAAW,UAAU,gBAAgB;AACrF,SAAS,aAAa;AACtB,SAAS,eAAe;AAExB,MAAM,cAAc,CAAC,QAAQ,QAAQ;AACrC,MAAM,YAAY,CAAC,QAAQ,OAAO,QAAQ;AAC1C,MAAM,WAAW,CAAC,QAAQ,OAAO,QAAQ;AACzC,MAAM,UAAU,CAAC,QAAQ,CAAC,OAAO,QAAQ,KAAK,QAAQ,GAAG,KAAK,IAAI,WAAW,KAAK,SAAS,GAAG,KAAK,CAAC,OAAO,KAAK,GAAG,EAAE;AACrH,MAAM,YAAY,CAAC,MAAM;AACvB,MAAI,OAAO,YAAY;AACrB,WAAO;AACT,SAAO,aAAa;AACtB;AACA,MAAM,eAAe,CAAC,SAAS;AAC7B,SAAO,MAAM,IAAI;AACnB;AACA,MAAM,iBAAiB,CAAC,QAAQ;AAC9B,MAAI,CAAC,SAAS,GAAG,GAAG;AAClB,WAAO;AAAA,EACT;AACA,SAAO,CAAC,OAAO,MAAM,OAAO,GAAG,CAAC;AAClC;AACA,MAAM,WAAW,CAAC,QAAQ;AACxB,SAAO,QAAQ;AACjB;AAEA,SAAS,WAAW,WAAW,SAAS,UAAU,cAAc,gBAAgB,aAAa;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918597,
+      "end": 1709718918597,
+      "order": "normal"
+    }
+  ]
+}

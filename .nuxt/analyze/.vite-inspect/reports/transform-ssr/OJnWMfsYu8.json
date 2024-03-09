@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { watch } from 'vue';\nimport { useEventListener } from '@vueuse/core';\n\nconst usePreventGlobal = (indicator, evt, cb) => {\n  const prevent = (e) => {\n    if (cb(e))\n      e.stopImmediatePropagation();\n  };\n  let stop = void 0;\n  watch(() => indicator.value, (val) => {\n    if (val) {\n      stop = useEventListener(document, evt, prevent, true);\n    } else {\n      stop == null ? void 0 : stop();\n    }\n  }, { immediate: true });\n};\n\nexport { usePreventGlobal };\n//# sourceMappingURL=index.mjs.map\n",
+      "start": 1709718918478,
+      "end": 1709718918491,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918491,
+      "end": 1709718918491,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { watch } from \"vue\";\nimport { useEventListener } from \"@vueuse/core\";\nconst usePreventGlobal = (indicator, evt, cb) => {\n  const prevent = (e) => {\n    if (cb(e))\n      e.stopImmediatePropagation();\n  };\n  let stop = void 0;\n  watch(() => indicator.value, (val) => {\n    if (val) {\n      stop = useEventListener(void 0, evt, prevent, true);\n    } else {\n      stop == null ? void 0 : stop();\n    }\n  }, { immediate: true });\n};\nexport { usePreventGlobal };\n",
+      "start": 1709718918491,
+      "end": 1709718918583,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/hooks/use-prevent-global/index.mjs\"],\n  \"sourcesContent\": [\"import { watch } from 'vue';\\nimport { useEventListener } from '@vueuse/core';\\n\\nconst usePreventGlobal = (indicator, evt, cb) => {\\n  const prevent = (e) => {\\n    if (cb(e))\\n      e.stopImmediatePropagation();\\n  };\\n  let stop = void 0;\\n  watch(() => indicator.value, (val) => {\\n    if (val) {\\n      stop = useEventListener(document, evt, prevent, true);\\n    } else {\\n      stop == null ? void 0 : stop();\\n    }\\n  }, { immediate: true });\\n};\\n\\nexport { usePreventGlobal };\\n//# sourceMappingURL=index.mjs.map\\n\"],\n  \"mappings\": \"AAAA,SAAS,aAAa;AACtB,SAAS,wBAAwB;AAEjC,MAAM,mBAAmB,CAAC,WAAW,KAAK,OAAO;AAC/C,QAAM,UAAU,CAAC,MAAM;AACrB,QAAI,GAAG,CAAC;AACN,QAAE,yBAAyB;AAAA,EAC/B;AACA,MAAI,OAAO;AACX,QAAM,MAAM,UAAU,OAAO,CAAC,QAAQ;AACpC,QAAI,KAAK;AACP,aAAO,iBAAiB,QAAU,KAAK,SAAS,IAAI;AAAA,IACtD,OAAO;AACL,cAAQ,OAAO,SAAS,KAAK;AAAA,IAC/B;AAAA,EACF,GAAG,EAAE,WAAW,KAAK,CAAC;AACxB;AAEA,SAAS;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918583,
+      "end": 1709718918583,
+      "order": "normal"
+    }
+  ]
+}

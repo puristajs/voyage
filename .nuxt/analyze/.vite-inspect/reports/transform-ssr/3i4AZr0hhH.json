@@ -1,0 +1,258 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/select-v2/src/select.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { defineComponent, computed, reactive, toRefs, provide, resolveComponent, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, withModifiers, createVNode, withCtx, createElementVNode, renderSlot, createCommentVNode, Fragment, renderList, normalizeStyle, toDisplayString, createBlock, withKeys, vModelText, resolveDynamicComponent, vShow, createSlots, normalizeProps, guardReactiveProps } from 'vue';\nimport '../../../utils/index.mjs';\nimport '../../../directives/index.mjs';\nimport { ElTooltip } from '../../tooltip/index.mjs';\nimport { ElTag } from '../../tag/index.mjs';\nimport { ElIcon } from '../../icon/index.mjs';\nimport '../../../constants/index.mjs';\nimport ElSelectMenu from './select-dropdown.mjs';\nimport useSelect from './useSelect.mjs';\nimport { SelectProps } from './defaults.mjs';\nimport { selectV2InjectionKey } from './token.mjs';\nimport _export_sfc from '../../../_virtual/plugin-vue_export-helper.mjs';\nimport ClickOutside from '../../../directives/click-outside/index.mjs';\nimport { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../constants/event.mjs';\nimport { isArray } from '@vue/shared';\n\nconst _sfc_main = defineComponent({\n  name: \"ElSelectV2\",\n  components: {\n    ElSelectMenu,\n    ElTag,\n    ElTooltip,\n    ElIcon\n  },\n  directives: { ClickOutside },\n  props: SelectProps,\n  emits: [\n    UPDATE_MODEL_EVENT,\n    CHANGE_EVENT,\n    \"remove-tag\",\n    \"clear\",\n    \"visible-change\",\n    \"focus\",\n    \"blur\"\n  ],\n  setup(props, { emit }) {\n    const modelValue = computed(() => {\n      const { modelValue: rawModelValue, multiple } = props;\n      const fallback = multiple ? [] : void 0;\n      if (isArray(rawModelValue)) {\n        return multiple ? rawModelValue : fallback;\n      }\n      return multiple ? fallback : rawModelValue;\n    });\n    const API = useSelect(reactive({\n      ...toRefs(props),\n      modelValue\n    }), emit);\n    provide(selectV2InjectionKey, {\n      props: reactive({\n        ...toRefs(props),\n        height: API.popupHeight,\n        modelValue\n      }),\n      tooltipRef: API.tooltipRef,\n      onSelect: API.onSelect,\n      onHover: API.onHover,\n      onKeyboardNavigate: API.onKeyboardNavigate,\n      onKeyboardSelect: API.onKeyboardSelect\n    });\n    return {\n      ...API,\n      modelValue\n    };\n  }\n});\nconst _hoisted_1 = [\"id\", \"autocomplete\", \"aria-expanded\", \"aria-label\", \"disabled\", \"readonly\", \"name\"];\nconst _hoisted_2 = [\"textContent\"];\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  const _component_el_tag = resolveComponent(\"el-tag\");\n  const _component_el_tooltip = resolveComponent(\"el-tooltip\");\n  const _component_el_icon = resolveComponent(\"el-icon\");\n  const _component_el_select_menu = resolveComponent(\"el-select-menu\");\n  const _directive_click_outside = resolveDirective(\"click-outside\");\n  return withDirectives((openBlock(), createElementBlock(\"div\", {\n    ref: \"selectRef\",\n    class: normalizeClass([_ctx.nsSelect.b(), _ctx.nsSelect.m(_ctx.selectSize)]),\n    onMouseenter: _cache[14] || (_cache[14] = ($event) => _ctx.states.inputHovering = true),\n    onMouseleave: _cache[15] || (_cache[15] = ($event) => _ctx.states.inputHovering = false),\n    onClick: _cache[16] || (_cache[16] = withModifiers((...args) => _ctx.toggleMenu && _ctx.toggleMenu(...args), [\"stop\"]))\n  }, [\n    createVNode(_component_el_tooltip, {\n      ref: \"tooltipRef\",\n      visible: _ctx.dropdownMenuVisible,\n      teleported: _ctx.teleported,\n      \"popper-class\": [_ctx.nsSelect.e(\"popper\"), _ctx.popperClass],\n      \"gpu-acceleration\": false,\n      \"stop-popper-mouse-event\": false,\n      \"popper-options\": _ctx.popperOptions,\n      \"fallback-placements\": _ctx.fallbackPlacements,\n      effect: _ctx.effect,\n      placement: _ctx.placement,\n      pure: \"\",\n      transition: `${_ctx.nsSelect.namespace.value}-zoom-in-top`,\n      trigger: \"click\",\n      persistent: _ctx.persistent,\n      onBeforeShow: _ctx.handleMenuEnter,\n      onHide: _cache[13] || (_cache[13] = ($event) => _ctx.states.isBeforeHide = false)\n    }, {\n      default: withCtx(() => [\n        createElementVNode(\"div\", {\n          ref: \"wrapperRef\",\n          class: normalizeClass([\n            _ctx.nsSelect.e(\"wrapper\"),\n            _ctx.nsSelect.is(\"focused\", _ctx.isFocused),\n            _ctx.nsSelect.is(\"hovering\", _ctx.states.inputHovering),\n            _ctx.nsSelect.is(\"filterable\", _ctx.filterable),\n            _ctx.nsSelect.is(\"disabled\", _ctx.selectDisabled)\n          ])\n        }, [\n          _ctx.$slots.prefix ? (openBlock(), createElementBlock(\"div\", {\n            key: 0,\n            ref: \"prefixRef\",\n            class: normalizeClass(_ctx.nsSelect.e(\"prefix\"))\n          }, [\n            renderSlot(_ctx.$slots, \"prefix\")\n          ], 2)) : createCommentVNode(\"v-if\", true),\n          createElementVNode(\"div\", {\n            ref: \"selectionRef\",\n            class: normalizeClass([\n              _ctx.nsSelect.e(\"selection\"),\n              _ctx.nsSelect.is(\"near\", _ctx.multiple && !_ctx.$slots.prefix && !!_ctx.modelValue.length)\n            ])\n          }, [\n            _ctx.multiple ? renderSlot(_ctx.$slots, \"tag\", { key: 0 }, () => [\n              (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.showTagList, (item) => {\n                return openBlock(), createElementBlock(\"div\", {\n                  key: _ctx.getValueKey(_ctx.getValue(item)),\n                  class: normalizeClass(_ctx.nsSelect.e(\"selected-item\"))\n                }, [\n                  createVNode(_component_el_tag, {\n                    closable: !_ctx.selectDisabled && !_ctx.getDisabled(item),\n                    size: _ctx.collapseTagSize,\n                    type: _ctx.tagType,\n                    \"disable-transitions\": \"\",\n                    style: normalizeStyle(_ctx.tagStyle),\n                    onClose: ($event) => _ctx.deleteTag($event, item)\n                  }, {\n                    default: withCtx(() => [\n                      createElementVNode(\"span\", {\n                        class: normalizeClass(_ctx.nsSelect.e(\"tags-text\"))\n                      }, toDisplayString(_ctx.getLabel(item)), 3)\n                    ]),\n                    _: 2\n                  }, 1032, [\"closable\", \"size\", \"type\", \"style\", \"onClose\"])\n                ], 2);\n              }), 128)),\n              _ctx.collapseTags && _ctx.modelValue.length > _ctx.maxCollapseTags ? (openBlock(), createBlock(_component_el_tooltip, {\n                key: 0,\n                ref: \"tagTooltipRef\",\n                disabled: _ctx.dropdownMenuVisible || !_ctx.collapseTagsTooltip,\n                \"fallback-placements\": [\"bottom\", \"top\", \"right\", \"left\"],\n                effect: _ctx.effect,\n                placement: \"bottom\",\n                teleported: _ctx.teleported\n              }, {\n                default: withCtx(() => [\n                  createElementVNode(\"div\", {\n                    ref: \"collapseItemRef\",\n                    class: normalizeClass(_ctx.nsSelect.e(\"selected-item\"))\n                  }, [\n                    createVNode(_component_el_tag, {\n                      closable: false,\n                      size: _ctx.collapseTagSize,\n                      type: _ctx.tagType,\n                      style: normalizeStyle(_ctx.collapseTagStyle),\n                      \"disable-transitions\": \"\"\n                    }, {\n                      default: withCtx(() => [\n                        createElementVNode(\"span\", {\n                          class: normalizeClass(_ctx.nsSelect.e(\"tags-text\"))\n                        }, \" + \" + toDisplayString(_ctx.modelValue.length - _ctx.maxCollapseTags), 3)\n                      ]),\n                      _: 1\n                    }, 8, [\"size\", \"type\", \"style\"])\n                  ], 2)\n                ]),\n                content: withCtx(() => [\n                  createElementVNode(\"div\", {\n                    ref: \"tagMenuRef\",\n                    class: normalizeClass(_ctx.nsSelect.e(\"selection\"))\n                  }, [\n                    (openBlock(true), createElementBlock(Fragment, null, renderList(_ctx.collapseTagList, (selected) => {\n                      return openBlock(), createElementBlock(\"div\", {\n                        key: _ctx.getValueKey(_ctx.getValue(selected)),\n                        class: normalizeClass(_ctx.nsSelect.e(\"selected-item\"))\n                      }, [\n                        createVNode(_component_el_tag, {\n                          class: \"in-tooltip\",\n                          closable: !_ctx.selectDisabled && !_ctx.getDisabled(selected),\n                          size: _ctx.collapseTagSize,\n                          type: _ctx.tagType,\n                          \"disable-transitions\": \"\",\n                          onClose: ($event) => _ctx.deleteTag($event, selected)\n                        }, {\n                          default: withCtx(() => [\n                            createElementVNode(\"span\", {\n                              class: normalizeClass(_ctx.nsSelect.e(\"tags-text\"))\n                            }, toDisplayString(_ctx.getLabel(selected)), 3)\n                          ]),\n                          _: 2\n                        }, 1032, [\"closable\", \"size\", \"type\", \"onClose\"])\n                      ], 2);\n                    }), 128))\n                  ], 2)\n                ]),\n                _: 1\n              }, 8, [\"disabled\", \"effect\", \"teleported\"])) : createCommentVNode(\"v-if\", true)\n            ]) : createCommentVNode(\"v-if\", true),\n            !_ctx.selectDisabled ? (openBlock(), createElementBlock(\"div\", {\n              key: 1,\n              class: normalizeClass([\n                _ctx.nsSelect.e(\"selected-item\"),\n                _ctx.nsSelect.e(\"input-wrapper\"),\n                _ctx.nsSelect.is(\"hidden\", !_ctx.filterable)\n              ])\n            }, [\n              withDirectives(createElementVNode(\"input\", {\n                id: _ctx.inputId,\n                ref: \"inputRef\",\n                \"onUpdate:modelValue\": _cache[0] || (_cache[0] = ($event) => _ctx.states.inputValue = $event),\n                style: normalizeStyle(_ctx.inputStyle),\n                autocomplete: _ctx.autocomplete,\n                \"aria-autocomplete\": \"list\",\n                \"aria-haspopup\": \"listbox\",\n                autocapitalize: \"off\",\n                \"aria-expanded\": _ctx.expanded,\n                \"aria-label\": _ctx.ariaLabel,\n                class: normalizeClass([_ctx.nsSelect.e(\"input\"), _ctx.nsSelect.is(_ctx.selectSize)]),\n                disabled: _ctx.selectDisabled,\n                role: \"combobox\",\n                readonly: !_ctx.filterable,\n                spellcheck: \"false\",\n                type: \"text\",\n                name: _ctx.name,\n                onFocus: _cache[1] || (_cache[1] = (...args) => _ctx.handleFocus && _ctx.handleFocus(...args)),\n                onBlur: _cache[2] || (_cache[2] = (...args) => _ctx.handleBlur && _ctx.handleBlur(...args)),\n                onInput: _cache[3] || (_cache[3] = (...args) => _ctx.onInput && _ctx.onInput(...args)),\n                onCompositionstart: _cache[4] || (_cache[4] = (...args) => _ctx.handleCompositionStart && _ctx.handleCompositionStart(...args)),\n                onCompositionupdate: _cache[5] || (_cache[5] = (...args) => _ctx.handleCompositionUpdate && _ctx.handleCompositionUpdate(...args)),\n                onCompositionend: _cache[6] || (_cache[6] = (...args) => _ctx.handleCompositionEnd && _ctx.handleCompositionEnd(...args)),\n                onKeydown: [\n                  _cache[7] || (_cache[7] = withKeys(withModifiers(($event) => _ctx.onKeyboardNavigate(\"backward\"), [\"stop\", \"prevent\"]), [\"up\"])),\n                  _cache[8] || (_cache[8] = withKeys(withModifiers(($event) => _ctx.onKeyboardNavigate(\"forward\"), [\"stop\", \"prevent\"]), [\"down\"])),\n                  _cache[9] || (_cache[9] = withKeys(withModifiers((...args) => _ctx.onKeyboardSelect && _ctx.onKeyboardSelect(...args), [\"stop\", \"prevent\"]), [\"enter\"])),\n                  _cache[10] || (_cache[10] = withKeys(withModifiers((...args) => _ctx.handleEsc && _ctx.handleEsc(...args), [\"stop\", \"prevent\"]), [\"esc\"])),\n                  _cache[11] || (_cache[11] = withKeys(withModifiers((...args) => _ctx.handleDel && _ctx.handleDel(...args), [\"stop\"]), [\"delete\"]))\n                ],\n                onClick: _cache[12] || (_cache[12] = withModifiers((...args) => _ctx.toggleMenu && _ctx.toggleMenu(...args), [\"stop\"]))\n              }, null, 46, _hoisted_1), [\n                [vModelText, _ctx.states.inputValue]\n              ]),\n              _ctx.filterable ? (openBlock(), createElementBlock(\"span\", {\n                key: 0,\n                ref: \"calculatorRef\",\n                \"aria-hidden\": \"true\",\n                class: normalizeClass(_ctx.nsSelect.e(\"input-calculator\")),\n                textContent: toDisplayString(_ctx.states.inputValue)\n              }, null, 10, _hoisted_2)) : createCommentVNode(\"v-if\", true)\n            ], 2)) : createCommentVNode(\"v-if\", true),\n            _ctx.shouldShowPlaceholder ? (openBlock(), createElementBlock(\"div\", {\n              key: 2,\n              class: normalizeClass([\n                _ctx.nsSelect.e(\"selected-item\"),\n                _ctx.nsSelect.e(\"placeholder\"),\n                _ctx.nsSelect.is(\"transparent\", !_ctx.hasModelValue || _ctx.expanded && !_ctx.states.inputValue)\n              ])\n            }, [\n              createElementVNode(\"span\", null, toDisplayString(_ctx.currentPlaceholder), 1)\n            ], 2)) : createCommentVNode(\"v-if\", true)\n          ], 2),\n          createElementVNode(\"div\", {\n            ref: \"suffixRef\",\n            class: normalizeClass(_ctx.nsSelect.e(\"suffix\"))\n          }, [\n            _ctx.iconComponent ? withDirectives((openBlock(), createBlock(_component_el_icon, {\n              key: 0,\n              class: normalizeClass([_ctx.nsSelect.e(\"caret\"), _ctx.nsInput.e(\"icon\"), _ctx.iconReverse])\n            }, {\n              default: withCtx(() => [\n                (openBlock(), createBlock(resolveDynamicComponent(_ctx.iconComponent)))\n              ]),\n              _: 1\n            }, 8, [\"class\"])), [\n              [vShow, !_ctx.showClearBtn]\n            ]) : createCommentVNode(\"v-if\", true),\n            _ctx.showClearBtn && _ctx.clearIcon ? (openBlock(), createBlock(_component_el_icon, {\n              key: 1,\n              class: normalizeClass([_ctx.nsSelect.e(\"caret\"), _ctx.nsInput.e(\"icon\")]),\n              onClick: withModifiers(_ctx.handleClear, [\"prevent\", \"stop\"])\n            }, {\n              default: withCtx(() => [\n                (openBlock(), createBlock(resolveDynamicComponent(_ctx.clearIcon)))\n              ]),\n              _: 1\n            }, 8, [\"class\", \"onClick\"])) : createCommentVNode(\"v-if\", true),\n            _ctx.validateState && _ctx.validateIcon ? (openBlock(), createBlock(_component_el_icon, {\n              key: 2,\n              class: normalizeClass([_ctx.nsInput.e(\"icon\"), _ctx.nsInput.e(\"validateIcon\")])\n            }, {\n              default: withCtx(() => [\n                (openBlock(), createBlock(resolveDynamicComponent(_ctx.validateIcon)))\n              ]),\n              _: 1\n            }, 8, [\"class\"])) : createCommentVNode(\"v-if\", true)\n          ], 2)\n        ], 2)\n      ]),\n      content: withCtx(() => [\n        createVNode(_component_el_select_menu, {\n          ref: \"menuRef\",\n          data: _ctx.filteredOptions,\n          width: _ctx.popperSize,\n          \"hovering-index\": _ctx.states.hoveringIndex,\n          \"scrollbar-always-on\": _ctx.scrollbarAlwaysOn\n        }, createSlots({\n          default: withCtx((scope) => [\n            renderSlot(_ctx.$slots, \"default\", normalizeProps(guardReactiveProps(scope)))\n          ]),\n          _: 2\n        }, [\n          _ctx.$slots.header ? {\n            name: \"header\",\n            fn: withCtx(() => [\n              createElementVNode(\"div\", {\n                class: normalizeClass(_ctx.nsSelect.be(\"dropdown\", \"header\"))\n              }, [\n                renderSlot(_ctx.$slots, \"header\")\n              ], 2)\n            ])\n          } : void 0,\n          _ctx.$slots.loading && _ctx.loading ? {\n            name: \"loading\",\n            fn: withCtx(() => [\n              createElementVNode(\"div\", {\n                class: normalizeClass(_ctx.nsSelect.be(\"dropdown\", \"loading\"))\n              }, [\n                renderSlot(_ctx.$slots, \"loading\")\n              ], 2)\n            ])\n          } : _ctx.loading || _ctx.filteredOptions.length === 0 ? {\n            name: \"empty\",\n            fn: withCtx(() => [\n              createElementVNode(\"div\", {\n                class: normalizeClass(_ctx.nsSelect.be(\"dropdown\", \"empty\"))\n              }, [\n                renderSlot(_ctx.$slots, \"empty\", {}, () => [\n                  createElementVNode(\"span\", null, toDisplayString(_ctx.emptyText), 1)\n                ])\n              ], 2)\n            ])\n          } : void 0,\n          _ctx.$slots.footer ? {\n            name: \"footer\",\n            fn: withCtx(() => [\n              createElementVNode(\"div\", {\n                class: normalizeClass(_ctx.nsSelect.be(\"dropdown\", \"footer\"))\n              }, [\n                renderSlot(_ctx.$slots, \"footer\")\n              ], 2)\n            ])\n          } : void 0\n        ]), 1032, [\"data\", \"width\", \"hovering-index\", \"scrollbar-always-on\"])\n      ]),\n      _: 3\n    }, 8, [\"visible\", \"teleported\", \"popper-class\", \"popper-options\", \"fallback-placements\", \"effect\", \"placement\", \"transition\", \"persistent\", \"onBeforeShow\"])\n  ], 34)), [\n    [_directive_click_outside, _ctx.handleClickOutside, _ctx.popperRef]\n  ]);\n}\nvar Select = /* @__PURE__ */ _export_sfc(_sfc_main, [[\"render\", _sfc_render], [\"__file\", \"select.vue\"]]);\n\nexport { Select as default };\n//# sourceMappingURL=select.mjs.map\n",
+      "start": 1709718918684,
+      "end": 1709718918716,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718918716,
+      "end": 1709718918716,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718918716,
+      "end": 1709718918717,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718918717,
+      "end": 1709718918717,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718918717,
+      "end": 1709718918717,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718918717,
+      "end": 1709718918717,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918717,
+      "end": 1709718918717,
+      "order": "normal"
+    }
+  ]
+}

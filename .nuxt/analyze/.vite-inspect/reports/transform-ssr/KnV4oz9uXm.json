@@ -1,0 +1,17 @@
+{
+  "resolvedId": "virtual:nuxt:/Users/sebastianwessel/projekte/voyage/.nuxt/css.mjs",
+  "transforms": [
+    {
+      "name": "__load__",
+      "result": "",
+      "start": 1709718918130,
+      "end": 1709718918130
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718918130,
+      "end": 1709718918130,
+      "order": "normal"
+    }
+  ]
+}

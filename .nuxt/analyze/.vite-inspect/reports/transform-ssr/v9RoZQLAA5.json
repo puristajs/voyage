@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { defineComponent, ref, computed, watch, nextTick, openBlock, createElementBlock, unref, normalizeClass, createElementVNode, Fragment, renderList, withKeys, withModifiers, toDisplayString } from 'vue';\nimport dayjs from 'dayjs';\nimport '../../../../hooks/index.mjs';\nimport '../../../time-picker/index.mjs';\nimport '../../../../utils/index.mjs';\nimport { basicMonthTableProps } from '../props/basic-month-table.mjs';\nimport _export_sfc from '../../../../_virtual/plugin-vue_export-helper.mjs';\nimport { rangeArr } from '../../../time-picker/src/utils.mjs';\nimport { useNamespace } from '../../../../hooks/use-namespace/index.mjs';\nimport { useLocale } from '../../../../hooks/use-locale/index.mjs';\nimport { castArray } from '../../../../utils/arrays.mjs';\nimport { hasClass } from '../../../../utils/dom/style.mjs';\n\nconst _hoisted_1 = [\"aria-label\"];\nconst _hoisted_2 = [\"aria-selected\", \"aria-label\", \"tabindex\", \"onKeydown\"];\nconst _hoisted_3 = { class: \"cell\" };\nconst _sfc_main = /* @__PURE__ */ defineComponent({\n  __name: \"basic-month-table\",\n  props: basicMonthTableProps,\n  emits: [\"changerange\", \"pick\", \"select\"],\n  setup(__props, { expose, emit }) {\n    const props = __props;\n    const datesInMonth = (year, month, lang2) => {\n      const firstDay = dayjs().locale(lang2).startOf(\"month\").month(month).year(year);\n      const numOfDays = firstDay.daysInMonth();\n      return rangeArr(numOfDays).map((n) => firstDay.add(n, \"day\").toDate());\n    };\n    const ns = useNamespace(\"month-table\");\n    const { t, lang } = useLocale();\n    const tbodyRef = ref();\n    const currentCellRef = ref();\n    const months = ref(props.date.locale(\"en\").localeData().monthsShort().map((_) => _.toLowerCase()));\n    const tableRows = ref([\n      [],\n      [],\n      []\n    ]);\n    const lastRow = ref();\n    const lastColumn = ref();\n    const rows = computed(() => {\n      var _a, _b;\n      const rows2 = tableRows.value;\n      const now = dayjs().locale(lang.value).startOf(\"month\");\n      for (let i = 0; i < 3; i++) {\n        const row = rows2[i];\n        for (let j = 0; j < 4; j++) {\n          const cell = row[j] || (row[j] = {\n            row: i,\n            column: j,\n            type: \"normal\",\n            inRange: false,\n            start: false,\n            end: false,\n            text: -1,\n            disabled: false\n          });\n          cell.type = \"normal\";\n          const index = i * 4 + j;\n          const calTime = props.date.startOf(\"year\").month(index);\n          const calEndDate = props.rangeState.endDate || props.maxDate || props.rangeState.selecting && props.minDate || null;\n          cell.inRange = !!(props.minDate && calTime.isSameOrAfter(props.minDate, \"month\") && calEndDate && calTime.isSameOrBefore(calEndDate, \"month\")) || !!(props.minDate && calTime.isSameOrBefore(props.minDate, \"month\") && calEndDate && calTime.isSameOrAfter(calEndDate, \"month\"));\n          if ((_a = props.minDate) == null ? void 0 : _a.isSameOrAfter(calEndDate)) {\n            cell.start = !!(calEndDate && calTime.isSame(calEndDate, \"month\"));\n            cell.end = props.minDate && calTime.isSame(props.minDate, \"month\");\n          } else {\n            cell.start = !!(props.minDate && calTime.isSame(props.minDate, \"month\"));\n            cell.end = !!(calEndDate && calTime.isSame(calEndDate, \"month\"));\n          }\n          const isToday = now.isSame(calTime);\n          if (isToday) {\n            cell.type = \"today\";\n          }\n          cell.text = index;\n          cell.disabled = ((_b = props.disabledDate) == null ? void 0 : _b.call(props, calTime.toDate())) || false;\n        }\n      }\n      return rows2;\n    });\n    const focus = () => {\n      var _a;\n      (_a = currentCellRef.value) == null ? void 0 : _a.focus();\n    };\n    const getCellStyle = (cell) => {\n      const style = {};\n      const year = props.date.year();\n      const today = new Date();\n      const month = cell.text;\n      style.disabled = props.disabledDate ? datesInMonth(year, month, lang.value).every(props.disabledDate) : false;\n      style.current = castArray(props.parsedValue).findIndex((date) => dayjs.isDayjs(date) && date.year() === year && date.month() === month) >= 0;\n      style.today = today.getFullYear() === year && today.getMonth() === month;\n      if (cell.inRange) {\n        style[\"in-range\"] = true;\n        if (cell.start) {\n          style[\"start-date\"] = true;\n        }\n        if (cell.end) {\n          style[\"end-date\"] = true;\n        }\n      }\n      return style;\n    };\n    const isSelectedCell = (cell) => {\n      const year = props.date.year();\n      const month = cell.text;\n      return castArray(props.date).findIndex((date) => date.year() === year && date.month() === month) >= 0;\n    };\n    const handleMouseMove = (event) => {\n      var _a;\n      if (!props.rangeState.selecting)\n        return;\n      let target = event.target;\n      if (target.tagName === \"SPAN\") {\n        target = (_a = target.parentNode) == null ? void 0 : _a.parentNode;\n      }\n      if (target.tagName === \"DIV\") {\n        target = target.parentNode;\n      }\n      if (target.tagName !== \"TD\")\n        return;\n      const row = target.parentNode.rowIndex;\n      const column = target.cellIndex;\n      if (rows.value[row][column].disabled)\n        return;\n      if (row !== lastRow.value || column !== lastColumn.value) {\n        lastRow.value = row;\n        lastColumn.value = column;\n        emit(\"changerange\", {\n          selecting: true,\n          endDate: props.date.startOf(\"year\").month(row * 4 + column)\n        });\n      }\n    };\n    const handleMonthTableClick = (event) => {\n      var _a;\n      const target = (_a = event.target) == null ? void 0 : _a.closest(\"td\");\n      if ((target == null ? void 0 : target.tagName) !== \"TD\")\n        return;\n      if (hasClass(target, \"disabled\"))\n        return;\n      const column = target.cellIndex;\n      const row = target.parentNode.rowIndex;\n      const month = row * 4 + column;\n      const newDate = props.date.startOf(\"year\").month(month);\n      if (props.selectionMode === \"range\") {\n        if (!props.rangeState.selecting) {\n          emit(\"pick\", { minDate: newDate, maxDate: null });\n          emit(\"select\", true);\n        } else {\n          if (props.minDate && newDate >= props.minDate) {\n            emit(\"pick\", { minDate: props.minDate, maxDate: newDate });\n          } else {\n            emit(\"pick\", { minDate: newDate, maxDate: props.minDate });\n          }\n          emit(\"select\", false);\n        }\n      } else {\n        emit(\"pick\", month);\n      }\n    };\n    watch(() => props.date, async () => {\n      var _a, _b;\n      if ((_a = tbodyRef.value) == null ? void 0 : _a.contains(document.activeElement)) {\n        await nextTick();\n        (_b = currentCellRef.value) == null ? void 0 : _b.focus();\n      }\n    });\n    expose({\n      focus\n    });\n    return (_ctx, _cache) => {\n      return openBlock(), createElementBlock(\"table\", {\n        role: \"grid\",\n        \"aria-label\": unref(t)(\"el.datepicker.monthTablePrompt\"),\n        class: normalizeClass(unref(ns).b()),\n        onClick: handleMonthTableClick,\n        onMousemove: handleMouseMove\n      }, [\n        createElementVNode(\"tbody\", {\n          ref_key: \"tbodyRef\",\n          ref: tbodyRef\n        }, [\n          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(rows), (row, key) => {\n            return openBlock(), createElementBlock(\"tr\", { key }, [\n              (openBlock(true), createElementBlock(Fragment, null, renderList(row, (cell, key_) => {\n                return openBlock(), createElementBlock(\"td\", {\n                  key: key_,\n                  ref_for: true,\n                  ref: (el) => isSelectedCell(cell) && (currentCellRef.value = el),\n                  class: normalizeClass(getCellStyle(cell)),\n                  \"aria-selected\": `${isSelectedCell(cell)}`,\n                  \"aria-label\": unref(t)(`el.datepicker.month${+cell.text + 1}`),\n                  tabindex: isSelectedCell(cell) ? 0 : -1,\n                  onKeydown: [\n                    withKeys(withModifiers(handleMonthTableClick, [\"prevent\", \"stop\"]), [\"space\"]),\n                    withKeys(withModifiers(handleMonthTableClick, [\"prevent\", \"stop\"]), [\"enter\"])\n                  ]\n                }, [\n                  createElementVNode(\"div\", null, [\n                    createElementVNode(\"span\", _hoisted_3, toDisplayString(unref(t)(\"el.datepicker.months.\" + months.value[cell.text])), 1)\n                  ])\n                ], 42, _hoisted_2);\n              }), 128))\n            ]);\n          }), 128))\n        ], 512)\n      ], 42, _hoisted_1);\n    };\n  }\n});\nvar MonthTable = /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__file\", \"basic-month-table.vue\"]]);\n\nexport { MonthTable as default };\n//# sourceMappingURL=basic-month-table.mjs.map\n",
+      "start": 1709718919043,
+      "end": 1709718919060,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718919060,
+      "end": 1709718919060,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { defineComponent, ref, computed, watch, nextTick, openBlock, createElementBlock, unref, normalizeClass, createElementVNode, Fragment, renderList, withKeys, withModifiers, toDisplayString } from \"vue\";\nimport dayjs from \"dayjs\";\nimport \"../../../../hooks/index.mjs\";\nimport \"../../../time-picker/index.mjs\";\nimport \"../../../../utils/index.mjs\";\nimport { basicMonthTableProps } from \"../props/basic-month-table.mjs\";\nimport _export_sfc from \"../../../../_virtual/plugin-vue_export-helper.mjs\";\nimport { rangeArr } from \"../../../time-picker/src/utils.mjs\";\nimport { useNamespace } from \"../../../../hooks/use-namespace/index.mjs\";\nimport { useLocale } from \"../../../../hooks/use-locale/index.mjs\";\nimport { castArray } from \"../../../../utils/arrays.mjs\";\nimport { hasClass } from \"../../../../utils/dom/style.mjs\";\nconst _hoisted_1 = [\"aria-label\"];\nconst _hoisted_2 = [\"aria-selected\", \"aria-label\", \"tabindex\", \"onKeydown\"];\nconst _hoisted_3 = { class: \"cell\" };\nconst _sfc_main = /* @__PURE__ */ defineComponent({\n  __name: \"basic-month-table\",\n  props: basicMonthTableProps,\n  emits: [\"changerange\", \"pick\", \"select\"],\n  setup(__props, { expose, emit }) {\n    const props = __props;\n    const datesInMonth = (year, month, lang2) => {\n      const firstDay = dayjs().locale(lang2).startOf(\"month\").month(month).year(year);\n      const numOfDays = firstDay.daysInMonth();\n      return rangeArr(numOfDays).map((n) => firstDay.add(n, \"day\").toDate());\n    };\n    const ns = useNamespace(\"month-table\");\n    const { t, lang } = useLocale();\n    const tbodyRef = ref();\n    const currentCellRef = ref();\n    const months = ref(props.date.locale(\"en\").localeData().monthsShort().map((_) => _.toLowerCase()));\n    const tableRows = ref([\n      [],\n      [],\n      []\n    ]);\n    const lastRow = ref();\n    const lastColumn = ref();\n    const rows = computed(() => {\n      var _a, _b;\n      const rows2 = tableRows.value;\n      const now = dayjs().locale(lang.value).startOf(\"month\");\n      for (let i = 0; i < 3; i++) {\n        const row = rows2[i];\n        for (let j = 0; j < 4; j++) {\n          const cell = row[j] || (row[j] = {\n            row: i,\n            column: j,\n            type: \"normal\",\n            inRange: false,\n            start: false,\n            end: false,\n            text: -1,\n            disabled: false\n          });\n          cell.type = \"normal\";\n          const index = i * 4 + j;\n          const calTime = props.date.startOf(\"year\").month(index);\n          const calEndDate = props.rangeState.endDate || props.maxDate || props.rangeState.selecting && props.minDate || null;\n          cell.inRange = !!(props.minDate && calTime.isSameOrAfter(props.minDate, \"month\") && calEndDate && calTime.isSameOrBefore(calEndDate, \"month\")) || !!(props.minDate && calTime.isSameOrBefore(props.minDate, \"month\") && calEndDate && calTime.isSameOrAfter(calEndDate, \"month\"));\n          if ((_a = props.minDate) == null ? void 0 : _a.isSameOrAfter(calEndDate)) {\n            cell.start = !!(calEndDate && calTime.isSame(calEndDate, \"month\"));\n            cell.end = props.minDate && calTime.isSame(props.minDate, \"month\");\n          } else {\n            cell.start = !!(props.minDate && calTime.isSame(props.minDate, \"month\"));\n            cell.end = !!(calEndDate && calTime.isSame(calEndDate, \"month\"));\n          }\n          const isToday = now.isSame(calTime);\n          if (isToday) {\n            cell.type = \"today\";\n          }\n          cell.text = index;\n          cell.disabled = ((_b = props.disabledDate) == null ? void 0 : _b.call(props, calTime.toDate())) || false;\n        }\n      }\n      return rows2;\n    });\n    const focus = () => {\n      var _a;\n      (_a = currentCellRef.value) == null ? void 0 : _a.focus();\n    };\n    const getCellStyle = (cell) => {\n      const style = {};\n      const year = props.date.year();\n      const today = /* @__PURE__ */ new Date();\n      const month = cell.text;\n      style.disabled = props.disabledDate ? datesInMonth(year, month, lang.value).every(props.disabledDate) : false;\n      style.current = castArray(props.parsedValue).findIndex((date) => dayjs.isDayjs(date) && date.year() === year && date.month() === month) >= 0;\n      style.today = today.getFullYear() === year && today.getMonth() === month;\n      if (cell.inRange) {\n        style[\"in-range\"] = true;\n        if (cell.start) {\n          style[\"start-date\"] = true;\n        }\n        if (cell.end) {\n          style[\"end-date\"] = true;\n        }\n      }\n      return style;\n    };\n    const isSelectedCell = (cell) => {\n      const year = props.date.year();\n      const month = cell.text;\n      return castArray(props.date).findIndex((date) => date.year() === year && date.month() === month) >= 0;\n    };\n    const handleMouseMove = (event) => {\n      var _a;\n      if (!props.rangeState.selecting)\n        return;\n      let target = event.target;\n      if (target.tagName === \"SPAN\") {\n        target = (_a = target.parentNode) == null ? void 0 : _a.parentNode;\n      }\n      if (target.tagName === \"DIV\") {\n        target = target.parentNode;\n      }\n      if (target.tagName !== \"TD\")\n        return;\n      const row = target.parentNode.rowIndex;\n      const column = target.cellIndex;\n      if (rows.value[row][column].disabled)\n        return;\n      if (row !== lastRow.value || column !== lastColumn.value) {\n        lastRow.value = row;\n        lastColumn.value = column;\n        emit(\"changerange\", {\n          selecting: true,\n          endDate: props.date.startOf(\"year\").month(row * 4 + column)\n        });\n      }\n    };\n    const handleMonthTableClick = (event) => {\n      var _a;\n      const target = (_a = event.target) == null ? void 0 : _a.closest(\"td\");\n      if ((target == null ? void 0 : target.tagName) !== \"TD\")\n        return;\n      if (hasClass(target, \"disabled\"))\n        return;\n      const column = target.cellIndex;\n      const row = target.parentNode.rowIndex;\n      const month = row * 4 + column;\n      const newDate = props.date.startOf(\"year\").month(month);\n      if (props.selectionMode === \"range\") {\n        if (!props.rangeState.selecting) {\n          emit(\"pick\", { minDate: newDate, maxDate: null });\n          emit(\"select\", true);\n        } else {\n          if (props.minDate && newDate >= props.minDate) {\n            emit(\"pick\", { minDate: props.minDate, maxDate: newDate });\n          } else {\n            emit(\"pick\", { minDate: newDate, maxDate: props.minDate });\n          }\n          emit(\"select\", false);\n        }\n      } else {\n        emit(\"pick\", month);\n      }\n    };\n    watch(() => props.date, async () => {\n      var _a, _b;\n      if ((_a = tbodyRef.value) == null ? void 0 : _a.contains((void 0).activeElement)) {\n        await nextTick();\n        (_b = currentCellRef.value) == null ? void 0 : _b.focus();\n      }\n    });\n    expose({\n      focus\n    });\n    return (_ctx, _cache) => {\n      return openBlock(), createElementBlock(\"table\", {\n        role: \"grid\",\n        \"aria-label\": unref(t)(\"el.datepicker.monthTablePrompt\"),\n        class: normalizeClass(unref(ns).b()),\n        onClick: handleMonthTableClick,\n        onMousemove: handleMouseMove\n      }, [\n        createElementVNode(\"tbody\", {\n          ref_key: \"tbodyRef\",\n          ref: tbodyRef\n        }, [\n          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(rows), (row, key) => {\n            return openBlock(), createElementBlock(\"tr\", { key }, [\n              (openBlock(true), createElementBlock(Fragment, null, renderList(row, (cell, key_) => {\n                return openBlock(), createElementBlock(\"td\", {\n                  key: key_,\n                  ref_for: true,\n                  ref: (el) => isSelectedCell(cell) && (currentCellRef.value = el),\n                  class: normalizeClass(getCellStyle(cell)),\n                  \"aria-selected\": `${isSelectedCell(cell)}`,\n                  \"aria-label\": unref(t)(`el.datepicker.month${+cell.text + 1}`),\n                  tabindex: isSelectedCell(cell) ? 0 : -1,\n                  onKeydown: [\n                    withKeys(withModifiers(handleMonthTableClick, [\"prevent\", \"stop\"]), [\"space\"]),\n                    withKeys(withModifiers(handleMonthTableClick, [\"prevent\", \"stop\"]), [\"enter\"])\n                  ]\n                }, [\n                  createElementVNode(\"div\", null, [\n                    createElementVNode(\"span\", _hoisted_3, toDisplayString(unref(t)(\"el.datepicker.months.\" + months.value[cell.text])), 1)\n                  ])\n                ], 42, _hoisted_2);\n              }), 128))\n            ]);\n          }), 128))\n        ], 512)\n      ], 42, _hoisted_1);\n    };\n  }\n});\nvar MonthTable = /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__file\", \"basic-month-table.vue\"]]);\nexport { MonthTable as default };\n",
+      "start": 1709718919060,
+      "end": 1709718919396,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/date-picker/src/date-picker-com/basic-month-table.mjs\"],\n  \"sourcesContent\": [\"import { defineComponent, ref, computed, watch, nextTick, openBlock, createElementBlock, unref, normalizeClass, createElementVNode, Fragment, renderList, withKeys, withModifiers, toDisplayString } from 'vue';\\nimport dayjs from 'dayjs';\\nimport '../../../../hooks/index.mjs';\\nimport '../../../time-picker/index.mjs';\\nimport '../../../../utils/index.mjs';\\nimport { basicMonthTableProps } from '../props/basic-month-table.mjs';\\nimport _export_sfc from '../../../../_virtual/plugin-vue_export-helper.mjs';\\nimport { rangeArr } from '../../../time-picker/src/utils.mjs';\\nimport { useNamespace } from '../../../../hooks/use-namespace/index.mjs';\\nimport { useLocale } from '../../../../hooks/use-locale/index.mjs';\\nimport { castArray } from '../../../../utils/arrays.mjs';\\nimport { hasClass } from '../../../../utils/dom/style.mjs';\\n\\nconst _hoisted_1 = [\\\"aria-label\\\"];\\nconst _hoisted_2 = [\\\"aria-selected\\\", \\\"aria-label\\\", \\\"tabindex\\\", \\\"onKeydown\\\"];\\nconst _hoisted_3 = { class: \\\"cell\\\" };\\nconst _sfc_main = /* @__PURE__ */ defineComponent({\\n  __name: \\\"basic-month-table\\\",\\n  props: basicMonthTableProps,\\n  emits: [\\\"changerange\\\", \\\"pick\\\", \\\"select\\\"],\\n  setup(__props, { expose, emit }) {\\n    const props = __props;\\n    const datesInMonth = (year, month, lang2) => {\\n      const firstDay = dayjs().locale(lang2).startOf(\\\"month\\\").month(month).year(year);\\n      const numOfDays = firstDay.daysInMonth();\\n      return rangeArr(numOfDays).map((n) => firstDay.add(n, \\\"day\\\").toDate());\\n    };\\n    const ns = useNamespace(\\\"month-table\\\");\\n    const { t, lang } = useLocale();\\n    const tbodyRef = ref();\\n    const currentCellRef = ref();\\n    const months = ref(props.date.locale(\\\"en\\\").localeData().monthsShort().map((_) => _.toLowerCase()));\\n    const tableRows = ref([\\n      [],\\n      [],\\n      []\\n    ]);\\n    const lastRow = ref();\\n    const lastColumn = ref();\\n    const rows = computed(() => {\\n      var _a, _b;\\n      const rows2 = tableRows.value;\\n      const now = dayjs().locale(lang.value).startOf(\\\"month\\\");\\n      for (let i = 0; i < 3; i++) {\\n        const row = rows2[i];\\n        for (let j = 0; j < 4; j++) {\\n          const cell = row[j] || (row[j] = {\\n            row: i,\\n            column: j,\\n            type: \\\"normal\\\",\\n            inRange: false,\\n            start: false,\\n            end: false,\\n            text: -1,\\n            disabled: false\\n          });\\n          cell.type = \\\"normal\\\";\\n          const index = i * 4 + j;\\n          const calTime = props.date.startOf(\\\"year\\\").month(index);\\n          const calEndDate = props.rangeState.endDate || props.maxDate || props.rangeState.selecting && props.minDate || null;\\n          cell.inRange = !!(props.minDate && calTime.isSameOrAfter(props.minDate, \\\"month\\\") && calEndDate && calTime.isSameOrBefore(calEndDate, \\\"month\\\")) || !!(props.minDate && calTime.isSameOrBefore(props.minDate, \\\"month\\\") && calEndDate && calTime.isSameOrAfter(calEndDate, \\\"month\\\"));\\n          if ((_a = props.minDate) == null ? void 0 : _a.isSameOrAfter(calEndDate)) {\\n            cell.start = !!(calEndDate && calTime.isSame(calEndDate, \\\"month\\\"));\\n            cell.end = props.minDate && calTime.isSame(props.minDate, \\\"month\\\");\\n          } else {\\n            cell.start = !!(props.minDate && calTime.isSame(props.minDate, \\\"month\\\"));\\n            cell.end = !!(calEndDate && calTime.isSame(calEndDate, \\\"month\\\"));\\n          }\\n          const isToday = now.isSame(calTime);\\n          if (isToday) {\\n            cell.type = \\\"today\\\";\\n          }\\n          cell.text = index;\\n          cell.disabled = ((_b = props.disabledDate) == null ? void 0 : _b.call(props, calTime.toDate())) || false;\\n        }\\n      }\\n      return rows2;\\n    });\\n    const focus = () => {\\n      var _a;\\n      (_a = currentCellRef.value) == null ? void 0 : _a.focus();\\n    };\\n    const getCellStyle = (cell) => {\\n      const style = {};\\n      const year = props.date.year();\\n      const today = new Date();\\n      const month = cell.text;\\n      style.disabled = props.disabledDate ? datesInMonth(year, month, lang.value).every(props.disabledDate) : false;\\n      style.current = castArray(props.parsedValue).findIndex((date) => dayjs.isDayjs(date) && date.year() === year && date.month() === month) >= 0;\\n      style.today = today.getFullYear() === year && today.getMonth() === month;\\n      if (cell.inRange) {\\n        style[\\\"in-range\\\"] = true;\\n        if (cell.start) {\\n          style[\\\"start-date\\\"] = true;\\n        }\\n        if (cell.end) {\\n          style[\\\"end-date\\\"] = true;\\n        }\\n      }\\n      return style;\\n    };\\n    const isSelectedCell = (cell) => {\\n      const year = props.date.year();\\n      const month = cell.text;\\n      return castArray(props.date).findIndex((date) => date.year() === year && date.month() === month) >= 0;\\n    };\\n    const handleMouseMove = (event) => {\\n      var _a;\\n      if (!props.rangeState.selecting)\\n        return;\\n      let target = event.target;\\n      if (target.tagName === \\\"SPAN\\\") {\\n        target = (_a = target.parentNode) == null ? void 0 : _a.parentNode;\\n      }\\n      if (target.tagName === \\\"DIV\\\") {\\n        target = target.parentNode;\\n      }\\n      if (target.tagName !== \\\"TD\\\")\\n        return;\\n      const row = target.parentNode.rowIndex;\\n      const column = target.cellIndex;\\n      if (rows.value[row][column].disabled)\\n        return;\\n      if (row !== lastRow.value || column !== lastColumn.value) {\\n        lastRow.value = row;\\n        lastColumn.value = column;\\n        emit(\\\"changerange\\\", {\\n          selecting: true,\\n          endDate: props.date.startOf(\\\"year\\\").month(row * 4 + column)\\n        });\\n      }\\n    };\\n    const handleMonthTableClick = (event) => {\\n      var _a;\\n      const target = (_a = event.target) == null ? void 0 : _a.closest(\\\"td\\\");\\n      if ((target == null ? void 0 : target.tagName) !== \\\"TD\\\")\\n        return;\\n      if (hasClass(target, \\\"disabled\\\"))\\n        return;\\n      const column = target.cellIndex;\\n      const row = target.parentNode.rowIndex;\\n      const month = row * 4 + column;\\n      const newDate = props.date.startOf(\\\"year\\\").month(month);\\n      if (props.selectionMode === \\\"range\\\") {\\n        if (!props.rangeState.selecting) {\\n          emit(\\\"pick\\\", { minDate: newDate, maxDate: null });\\n          emit(\\\"select\\\", true);\\n        } else {\\n          if (props.minDate && newDate >= props.minDate) {\\n            emit(\\\"pick\\\", { minDate: props.minDate, maxDate: newDate });\\n          } else {\\n            emit(\\\"pick\\\", { minDate: newDate, maxDate: props.minDate });\\n          }\\n          emit(\\\"select\\\", false);\\n        }\\n      } else {\\n        emit(\\\"pick\\\", month);\\n      }\\n    };\\n    watch(() => props.date, async () => {\\n      var _a, _b;\\n      if ((_a = tbodyRef.value) == null ? void 0 : _a.contains(document.activeElement)) {\\n        await nextTick();\\n        (_b = currentCellRef.value) == null ? void 0 : _b.focus();\\n      }\\n    });\\n    expose({\\n      focus\\n    });\\n    return (_ctx, _cache) => {\\n      return openBlock(), createElementBlock(\\\"table\\\", {\\n        role: \\\"grid\\\",\\n        \\\"aria-label\\\": unref(t)(\\\"el.datepicker.monthTablePrompt\\\"),\\n        class: normalizeClass(unref(ns).b()),\\n        onClick: handleMonthTableClick,\\n        onMousemove: handleMouseMove\\n      }, [\\n        createElementVNode(\\\"tbody\\\", {\\n          ref_key: \\\"tbodyRef\\\",\\n          ref: tbodyRef\\n        }, [\\n          (openBlock(true), createElementBlock(Fragment, null, renderList(unref(rows), (row, key) => {\\n            return openBlock(), createElementBlock(\\\"tr\\\", { key }, [\\n              (openBlock(true), createElementBlock(Fragment, null, renderList(row, (cell, key_) => {\\n                return openBlock(), createElementBlock(\\\"td\\\", {\\n                  key: key_,\\n                  ref_for: true,\\n                  ref: (el) => isSelectedCell(cell) && (currentCellRef.value = el),\\n                  class: normalizeClass(getCellStyle(cell)),\\n                  \\\"aria-selected\\\": `${isSelectedCell(cell)}`,\\n                  \\\"aria-label\\\": unref(t)(`el.datepicker.month${+cell.text + 1}`),\\n                  tabindex: isSelectedCell(cell) ? 0 : -1,\\n                  onKeydown: [\\n                    withKeys(withModifiers(handleMonthTableClick, [\\\"prevent\\\", \\\"stop\\\"]), [\\\"space\\\"]),\\n                    withKeys(withModifiers(handleMonthTableClick, [\\\"prevent\\\", \\\"stop\\\"]), [\\\"enter\\\"])\\n                  ]\\n                }, [\\n                  createElementVNode(\\\"div\\\", null, [\\n                    createElementVNode(\\\"span\\\", _hoisted_3, toDisplayString(unref(t)(\\\"el.datepicker.months.\\\" + months.value[cell.text])), 1)\\n                  ])\\n                ], 42, _hoisted_2);\\n              }), 128))\\n            ]);\\n          }), 128))\\n        ], 512)\\n      ], 42, _hoisted_1);\\n    };\\n  }\\n});\\nvar MonthTable = /* @__PURE__ */ _export_sfc(_sfc_main, [[\\\"__file\\\", \\\"basic-month-table.vue\\\"]]);\\n\\nexport { MonthTable as default };\\n//# sourceMappingURL=basic-month-table.mjs.map\\n\"],\n  \"mappings\": \"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\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718919396,
+      "end": 1709718919396,
+      "order": "normal"
+    }
+  ]
+}

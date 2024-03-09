@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { defineComponent, inject, watch } from 'vue';\nimport '../../select/index.mjs';\nimport { selectKey } from '../../select/src/token.mjs';\n\nvar CacheOptions = defineComponent({\n  props: {\n    data: {\n      type: Array,\n      default: () => []\n    }\n  },\n  setup(props) {\n    const select = inject(selectKey);\n    watch(() => props.data, () => {\n      var _a;\n      props.data.forEach((item) => {\n        if (!select.states.cachedOptions.has(item.value)) {\n          select.states.cachedOptions.set(item.value, item);\n        }\n      });\n      const inputs = ((_a = select.selectRef) == null ? void 0 : _a.querySelectorAll(\"input\")) || [];\n      if (!Array.from(inputs).includes(document.activeElement)) {\n        select.setSelected();\n      }\n    }, { flush: \"post\", immediate: true });\n    return () => void 0;\n  }\n});\n\nexport { CacheOptions as default };\n//# sourceMappingURL=cache-options.mjs.map\n",
+      "start": 1709718918900,
+      "end": 1709718918929,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918929,
+      "end": 1709718918929,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { defineComponent, inject, watch } from \"vue\";\nimport \"../../select/index.mjs\";\nimport { selectKey } from \"../../select/src/token.mjs\";\nvar CacheOptions = defineComponent({\n  props: {\n    data: {\n      type: Array,\n      default: () => []\n    }\n  },\n  setup(props) {\n    const select = inject(selectKey);\n    watch(() => props.data, () => {\n      var _a;\n      props.data.forEach((item) => {\n        if (!select.states.cachedOptions.has(item.value)) {\n          select.states.cachedOptions.set(item.value, item);\n        }\n      });\n      const inputs = ((_a = select.selectRef) == null ? void 0 : _a.querySelectorAll(\"input\")) || [];\n      if (!Array.from(inputs).includes((void 0).activeElement)) {\n        select.setSelected();\n      }\n    }, { flush: \"post\", immediate: true });\n    return () => void 0;\n  }\n});\nexport { CacheOptions as default };\n",
+      "start": 1709718918929,
+      "end": 1709718919344,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/tree-select/src/cache-options.mjs\"],\n  \"sourcesContent\": [\"import { defineComponent, inject, watch } from 'vue';\\nimport '../../select/index.mjs';\\nimport { selectKey } from '../../select/src/token.mjs';\\n\\nvar CacheOptions = defineComponent({\\n  props: {\\n    data: {\\n      type: Array,\\n      default: () => []\\n    }\\n  },\\n  setup(props) {\\n    const select = inject(selectKey);\\n    watch(() => props.data, () => {\\n      var _a;\\n      props.data.forEach((item) => {\\n        if (!select.states.cachedOptions.has(item.value)) {\\n          select.states.cachedOptions.set(item.value, item);\\n        }\\n      });\\n      const inputs = ((_a = select.selectRef) == null ? void 0 : _a.querySelectorAll(\\\"input\\\")) || [];\\n      if (!Array.from(inputs).includes(document.activeElement)) {\\n        select.setSelected();\\n      }\\n    }, { flush: \\\"post\\\", immediate: true });\\n    return () => void 0;\\n  }\\n});\\n\\nexport { CacheOptions as default };\\n//# sourceMappingURL=cache-options.mjs.map\\n\"],\n  \"mappings\": \"AAAA,SAAS,iBAAiB,QAAQ,aAAa;AAC/C,OAAO;AACP,SAAS,iBAAiB;AAE1B,IAAI,eAAe,gBAAgB;AAAA,EACjC,OAAO;AAAA,IACL,MAAM;AAAA,MACJ,MAAM;AAAA,MACN,SAAS,MAAM,CAAC;AAAA,IAClB;AAAA,EACF;AAAA,EACA,MAAM,OAAO;AACX,UAAM,SAAS,OAAO,SAAS;AAC/B,UAAM,MAAM,MAAM,MAAM,MAAM;AAC5B,UAAI;AACJ,YAAM,KAAK,QAAQ,CAAC,SAAS;AAC3B,YAAI,CAAC,OAAO,OAAO,cAAc,IAAI,KAAK,KAAK,GAAG;AAChD,iBAAO,OAAO,cAAc,IAAI,KAAK,OAAO,IAAI;AAAA,QAClD;AAAA,MACF,CAAC;AACD,YAAM,WAAW,KAAK,OAAO,cAAc,OAAO,SAAS,GAAG,iBAAiB,OAAO,MAAM,CAAC;AAC7F,UAAI,CAAC,MAAM,KAAK,MAAM,EAAE,SAAS,SAAS,aAAa,GAAG;AACxD,eAAO,YAAY;AAAA,MACrB;AAAA,IACF,GAAG,EAAE,OAAO,QAAQ,WAAW,KAAK,CAAC;AACrC,WAAO,MAAM;AAAA,EACf;AACF,CAAC;AAED,SAAS,gBAAgB;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718919344,
+      "end": 1709718919344,
+      "order": "normal"
+    }
+  ]
+}

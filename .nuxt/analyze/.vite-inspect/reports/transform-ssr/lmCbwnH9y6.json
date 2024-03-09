@@ -1,0 +1,260 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/message/src/method.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { isVNode, render, createVNode } from 'vue';\nimport '../../../utils/index.mjs';\nimport '../../config-provider/index.mjs';\nimport MessageConstructor from './message2.mjs';\nimport { messageDefaults, messageTypes } from './message.mjs';\nimport { instances } from './instance.mjs';\nimport { isString, isFunction } from '@vue/shared';\nimport { isElement, isNumber } from '../../../utils/types.mjs';\nimport { debugWarn } from '../../../utils/error.mjs';\nimport { isClient } from '@vueuse/core';\nimport { messageConfig } from '../../config-provider/src/config-provider.mjs';\n\nlet seed = 1;\nconst normalizeOptions = (params) => {\n  const options = !params || isString(params) || isVNode(params) || isFunction(params) ? { message: params } : params;\n  const normalized = {\n    ...messageDefaults,\n    ...options\n  };\n  if (!normalized.appendTo) {\n    normalized.appendTo = document.body;\n  } else if (isString(normalized.appendTo)) {\n    let appendTo = document.querySelector(normalized.appendTo);\n    if (!isElement(appendTo)) {\n      debugWarn(\"ElMessage\", \"the appendTo option is not an HTMLElement. Falling back to document.body.\");\n      appendTo = document.body;\n    }\n    normalized.appendTo = appendTo;\n  }\n  return normalized;\n};\nconst closeMessage = (instance) => {\n  const idx = instances.indexOf(instance);\n  if (idx === -1)\n    return;\n  instances.splice(idx, 1);\n  const { handler } = instance;\n  handler.close();\n};\nconst createMessage = ({ appendTo, ...options }, context) => {\n  const id = `message_${seed++}`;\n  const userOnClose = options.onClose;\n  const container = document.createElement(\"div\");\n  const props = {\n    ...options,\n    id,\n    onClose: () => {\n      userOnClose == null ? void 0 : userOnClose();\n      closeMessage(instance);\n    },\n    onDestroy: () => {\n      render(null, container);\n    }\n  };\n  const vnode = createVNode(MessageConstructor, props, isFunction(props.message) || isVNode(props.message) ? {\n    default: isFunction(props.message) ? props.message : () => props.message\n  } : null);\n  vnode.appContext = context || message._context;\n  render(vnode, container);\n  appendTo.appendChild(container.firstElementChild);\n  const vm = vnode.component;\n  const handler = {\n    close: () => {\n      vm.exposed.visible.value = false;\n    }\n  };\n  const instance = {\n    id,\n    vnode,\n    vm,\n    handler,\n    props: vnode.component.props\n  };\n  return instance;\n};\nconst message = (options = {}, context) => {\n  if (!isClient)\n    return { close: () => void 0 };\n  if (isNumber(messageConfig.max) && instances.length >= messageConfig.max) {\n    return { close: () => void 0 };\n  }\n  const normalized = normalizeOptions(options);\n  if (normalized.grouping && instances.length) {\n    const instance2 = instances.find(({ vnode: vm }) => {\n      var _a;\n      return ((_a = vm.props) == null ? void 0 : _a.message) === normalized.message;\n    });\n    if (instance2) {\n      instance2.props.repeatNum += 1;\n      instance2.props.type = normalized.type;\n      return instance2.handler;\n    }\n  }\n  const instance = createMessage(normalized, context);\n  instances.push(instance);\n  return instance.handler;\n};\nmessageTypes.forEach((type) => {\n  message[type] = (options = {}, appContext) => {\n    const normalized = normalizeOptions(options);\n    return message({ ...normalized, type }, appContext);\n  };\n});\nfunction closeAll(type) {\n  for (const instance of instances) {\n    if (!type || type === instance.props.type) {\n      instance.handler.close();\n    }\n  }\n}\nmessage.closeAll = closeAll;\nmessage._context = null;\n\nexport { closeAll, message as default };\n//# sourceMappingURL=method.mjs.map\n",
+      "start": 1709718918763,
+      "end": 1709718918787,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718918787,
+      "end": 1709718918787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { isVNode, render, createVNode } from \"vue\";\nimport \"../../../utils/index.mjs\";\nimport \"../../config-provider/index.mjs\";\nimport MessageConstructor from \"./message2.mjs\";\nimport { messageDefaults, messageTypes } from \"./message.mjs\";\nimport { instances } from \"./instance.mjs\";\nimport { isString, isFunction } from \"@vue/shared\";\nimport { isElement, isNumber } from \"../../../utils/types.mjs\";\nimport { debugWarn } from \"../../../utils/error.mjs\";\nimport { isClient } from \"@vueuse/core\";\nimport { messageConfig } from \"../../config-provider/src/config-provider.mjs\";\nlet seed = 1;\nconst normalizeOptions = (params) => {\n  const options = !params || isString(params) || isVNode(params) || isFunction(params) ? { message: params } : params;\n  const normalized = {\n    ...messageDefaults,\n    ...options\n  };\n  if (!normalized.appendTo) {\n    normalized.appendTo = (void 0).body;\n  } else if (isString(normalized.appendTo)) {\n    let appendTo = (void 0).querySelector(normalized.appendTo);\n    if (!isElement(appendTo)) {\n      debugWarn(\"ElMessage\", \"the appendTo option is not an HTMLElement. Falling back to document.body.\");\n      appendTo = (void 0).body;\n    }\n    normalized.appendTo = appendTo;\n  }\n  return normalized;\n};\nconst closeMessage = (instance) => {\n  const idx = instances.indexOf(instance);\n  if (idx === -1)\n    return;\n  instances.splice(idx, 1);\n  const { handler } = instance;\n  handler.close();\n};\nconst createMessage = ({ appendTo, ...options }, context) => {\n  const id = `message_${seed++}`;\n  const userOnClose = options.onClose;\n  const container = (void 0).createElement(\"div\");\n  const props = {\n    ...options,\n    id,\n    onClose: () => {\n      userOnClose == null ? void 0 : userOnClose();\n      closeMessage(instance);\n    },\n    onDestroy: () => {\n      render(null, container);\n    }\n  };\n  const vnode = createVNode(MessageConstructor, props, isFunction(props.message) || isVNode(props.message) ? {\n    default: isFunction(props.message) ? props.message : () => props.message\n  } : null);\n  vnode.appContext = context || message._context;\n  render(vnode, container);\n  appendTo.appendChild(container.firstElementChild);\n  const vm = vnode.component;\n  const handler = {\n    close: () => {\n      vm.exposed.visible.value = false;\n    }\n  };\n  const instance = {\n    id,\n    vnode,\n    vm,\n    handler,\n    props: vnode.component.props\n  };\n  return instance;\n};\nconst message = (options = {}, context) => {\n  if (!isClient)\n    return { close: () => void 0 };\n  if (isNumber(messageConfig.max) && instances.length >= messageConfig.max) {\n    return { close: () => void 0 };\n  }\n  const normalized = normalizeOptions(options);\n  if (normalized.grouping && instances.length) {\n    const instance2 = instances.find(({ vnode: vm }) => {\n      var _a;\n      return ((_a = vm.props) == null ? void 0 : _a.message) === normalized.message;\n    });\n    if (instance2) {\n      instance2.props.repeatNum += 1;\n      instance2.props.type = normalized.type;\n      return instance2.handler;\n    }\n  }\n  const instance = createMessage(normalized, context);\n  instances.push(instance);\n  return instance.handler;\n};\nmessageTypes.forEach((type) => {\n  message[type] = (options = {}, appContext) => {\n    const normalized = normalizeOptions(options);\n    return message({ ...normalized, type }, appContext);\n  };\n});\nfunction closeAll(type) {\n  for (const instance of instances) {\n    if (!type || type === instance.props.type) {\n      instance.handler.close();\n    }\n  }\n}\nmessage.closeAll = closeAll;\nmessage._context = null;\nexport { closeAll, message as default };\n",
+      "start": 1709718918787,
+      "end": 1709718919149,
+      "order": "normal",
+      "sourcemaps": "{\n  \"version\": 3,\n  \"sources\": [\"/Users/sebastianwessel/projekte/voyage/node_modules/element-plus/es/components/message/src/method.mjs\"],\n  \"sourcesContent\": [\"import { isVNode, render, createVNode } from 'vue';\\nimport '../../../utils/index.mjs';\\nimport '../../config-provider/index.mjs';\\nimport MessageConstructor from './message2.mjs';\\nimport { messageDefaults, messageTypes } from './message.mjs';\\nimport { instances } from './instance.mjs';\\nimport { isString, isFunction } from '@vue/shared';\\nimport { isElement, isNumber } from '../../../utils/types.mjs';\\nimport { debugWarn } from '../../../utils/error.mjs';\\nimport { isClient } from '@vueuse/core';\\nimport { messageConfig } from '../../config-provider/src/config-provider.mjs';\\n\\nlet seed = 1;\\nconst normalizeOptions = (params) => {\\n  const options = !params || isString(params) || isVNode(params) || isFunction(params) ? { message: params } : params;\\n  const normalized = {\\n    ...messageDefaults,\\n    ...options\\n  };\\n  if (!normalized.appendTo) {\\n    normalized.appendTo = document.body;\\n  } else if (isString(normalized.appendTo)) {\\n    let appendTo = document.querySelector(normalized.appendTo);\\n    if (!isElement(appendTo)) {\\n      debugWarn(\\\"ElMessage\\\", \\\"the appendTo option is not an HTMLElement. Falling back to document.body.\\\");\\n      appendTo = document.body;\\n    }\\n    normalized.appendTo = appendTo;\\n  }\\n  return normalized;\\n};\\nconst closeMessage = (instance) => {\\n  const idx = instances.indexOf(instance);\\n  if (idx === -1)\\n    return;\\n  instances.splice(idx, 1);\\n  const { handler } = instance;\\n  handler.close();\\n};\\nconst createMessage = ({ appendTo, ...options }, context) => {\\n  const id = `message_${seed++}`;\\n  const userOnClose = options.onClose;\\n  const container = document.createElement(\\\"div\\\");\\n  const props = {\\n    ...options,\\n    id,\\n    onClose: () => {\\n      userOnClose == null ? void 0 : userOnClose();\\n      closeMessage(instance);\\n    },\\n    onDestroy: () => {\\n      render(null, container);\\n    }\\n  };\\n  const vnode = createVNode(MessageConstructor, props, isFunction(props.message) || isVNode(props.message) ? {\\n    default: isFunction(props.message) ? props.message : () => props.message\\n  } : null);\\n  vnode.appContext = context || message._context;\\n  render(vnode, container);\\n  appendTo.appendChild(container.firstElementChild);\\n  const vm = vnode.component;\\n  const handler = {\\n    close: () => {\\n      vm.exposed.visible.value = false;\\n    }\\n  };\\n  const instance = {\\n    id,\\n    vnode,\\n    vm,\\n    handler,\\n    props: vnode.component.props\\n  };\\n  return instance;\\n};\\nconst message = (options = {}, context) => {\\n  if (!isClient)\\n    return { close: () => void 0 };\\n  if (isNumber(messageConfig.max) && instances.length >= messageConfig.max) {\\n    return { close: () => void 0 };\\n  }\\n  const normalized = normalizeOptions(options);\\n  if (normalized.grouping && instances.length) {\\n    const instance2 = instances.find(({ vnode: vm }) => {\\n      var _a;\\n      return ((_a = vm.props) == null ? void 0 : _a.message) === normalized.message;\\n    });\\n    if (instance2) {\\n      instance2.props.repeatNum += 1;\\n      instance2.props.type = normalized.type;\\n      return instance2.handler;\\n    }\\n  }\\n  const instance = createMessage(normalized, context);\\n  instances.push(instance);\\n  return instance.handler;\\n};\\nmessageTypes.forEach((type) => {\\n  message[type] = (options = {}, appContext) => {\\n    const normalized = normalizeOptions(options);\\n    return message({ ...normalized, type }, appContext);\\n  };\\n});\\nfunction closeAll(type) {\\n  for (const instance of instances) {\\n    if (!type || type === instance.props.type) {\\n      instance.handler.close();\\n    }\\n  }\\n}\\nmessage.closeAll = closeAll;\\nmessage._context = null;\\n\\nexport { closeAll, message as default };\\n//# sourceMappingURL=method.mjs.map\\n\"],\n  \"mappings\": \"AAAA,SAAS,SAAS,QAAQ,mBAAmB;AAC7C,OAAO;AACP,OAAO;AACP,OAAO,wBAAwB;AAC/B,SAAS,iBAAiB,oBAAoB;AAC9C,SAAS,iBAAiB;AAC1B,SAAS,UAAU,kBAAkB;AACrC,SAAS,WAAW,gBAAgB;AACpC,SAAS,iBAAiB;AAC1B,SAAS,gBAAgB;AACzB,SAAS,qBAAqB;AAE9B,IAAI,OAAO;AACX,MAAM,mBAAmB,CAAC,WAAW;AACnC,QAAM,UAAU,CAAC,UAAU,SAAS,MAAM,KAAK,QAAQ,MAAM,KAAK,WAAW,MAAM,IAAI,EAAE,SAAS,OAAO,IAAI;AAC7G,QAAM,aAAa;AAAA,IACjB,GAAG;AAAA,IACH,GAAG;AAAA,EACL;AACA,MAAI,CAAC,WAAW,UAAU;AACxB,eAAW,WAAW,SAAS;AAAA,EACjC,WAAW,SAAS,WAAW,QAAQ,GAAG;AACxC,QAAI,WAAW,SAAS,cAAc,WAAW,QAAQ;AACzD,QAAI,CAAC,UAAU,QAAQ,GAAG;AACxB,gBAAU,aAAa,2EAA2E;AAClG,iBAAW,SAAS;AAAA,IACtB;AACA,eAAW,WAAW;AAAA,EACxB;AACA,SAAO;AACT;AACA,MAAM,eAAe,CAAC,aAAa;AACjC,QAAM,MAAM,UAAU,QAAQ,QAAQ;AACtC,MAAI,QAAQ;AACV;AACF,YAAU,OAAO,KAAK,CAAC;AACvB,QAAM,EAAE,QAAQ,IAAI;AACpB,UAAQ,MAAM;AAChB;AACA,MAAM,gBAAgB,CAAC,EAAE,UAAU,GAAG,QAAQ,GAAG,YAAY;AAC3D,QAAM,KAAK,WAAW,MAAM;AAC5B,QAAM,cAAc,QAAQ;AAC5B,QAAM,YAAY,SAAS,cAAc,KAAK;AAC9C,QAAM,QAAQ;AAAA,IACZ,GAAG;AAAA,IACH;AAAA,IACA,SAAS,MAAM;AACb,qBAAe,OAAO,SAAS,YAAY;AAC3C,mBAAa,QAAQ;AAAA,IACvB;AAAA,IACA,WAAW,MAAM;AACf,aAAO,MAAM,SAAS;AAAA,IACxB;AAAA,EACF;AACA,QAAM,QAAQ,YAAY,oBAAoB,OAAO,WAAW,MAAM,OAAO,KAAK,QAAQ,MAAM,OAAO,IAAI;AAAA,IACzG,SAAS,WAAW,MAAM,OAAO,IAAI,MAAM,UAAU,MAAM,MAAM;AAAA,EACnE,IAAI,IAAI;AACR,QAAM,aAAa,WAAW,QAAQ;AACtC,SAAO,OAAO,SAAS;AACvB,WAAS,YAAY,UAAU,iBAAiB;AAChD,QAAM,KAAK,MAAM;AACjB,QAAM,UAAU;AAAA,IACd,OAAO,MAAM;AACX,SAAG,QAAQ,QAAQ,QAAQ;AAAA,IAC7B;AAAA,EACF;AACA,QAAM,WAAW;AAAA,IACf;AAAA,IACA;AAAA,IACA;AAAA,IACA;AAAA,IACA,OAAO,MAAM,UAAU;AAAA,EACzB;AACA,SAAO;AACT;AACA,MAAM,UAAU,CAAC,UAAU,CAAC,GAAG,YAAY;AACzC,MAAI,CAAC;AACH,WAAO,EAAE,OAAO,MAAM,OAAO;AAC/B,MAAI,SAAS,cAAc,GAAG,KAAK,UAAU,UAAU,cAAc,KAAK;AACxE,WAAO,EAAE,OAAO,MAAM,OAAO;AAAA,EAC/B;AACA,QAAM,aAAa,iBAAiB,OAAO;AAC3C,MAAI,WAAW,YAAY,UAAU,QAAQ;AAC3C,UAAM,YAAY,UAAU,KAAK,CAAC,EAAE,OAAO,GAAG,MAAM;AAClD,UAAI;AACJ,eAAS,KAAK,GAAG,UAAU,OAAO,SAAS,GAAG,aAAa,WAAW;AAAA,IACxE,CAAC;AACD,QAAI,WAAW;AACb,gBAAU,MAAM,aAAa;AAC7B,gBAAU,MAAM,OAAO,WAAW;AAClC,aAAO,UAAU;AAAA,IACnB;AAAA,EACF;AACA,QAAM,WAAW,cAAc,YAAY,OAAO;AAClD,YAAU,KAAK,QAAQ;AACvB,SAAO,SAAS;AAClB;AACA,aAAa,QAAQ,CAAC,SAAS;AAC7B,UAAQ,IAAI,IAAI,CAAC,UAAU,CAAC,GAAG,eAAe;AAC5C,UAAM,aAAa,iBAAiB,OAAO;AAC3C,WAAO,QAAQ,EAAE,GAAG,YAAY,KAAK,GAAG,UAAU;AAAA,EACpD;AACF,CAAC;AACD,SAAS,SAAS,MAAM;AACtB,aAAW,YAAY,WAAW;AAChC,QAAI,CAAC,QAAQ,SAAS,SAAS,MAAM,MAAM;AACzC,eAAS,QAAQ,MAAM;AAAA,IACzB;AAAA,EACF;AACF;AACA,QAAQ,WAAW;AACnB,QAAQ,WAAW;AAEnB,SAAS,UAAU,WAAW;\",\n  \"names\": []\n}\n"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718919149,
+      "end": 1709718919149,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919149,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718919149,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718919150,
+      "end": 1709718919150,
+      "order": "normal"
+    }
+  ]
+}

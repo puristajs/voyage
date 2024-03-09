@@ -1,0 +1,235 @@
+{
+  "resolvedId": "/Users/sebastianwessel/projekte/voyage/pages/index.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n    <div class=\"page\">\n        <div class=\"left-side\">\n            <div style=\"text-align: center; width: 100%\">\n                <h1>Welcome back</h1>\n                <p>\n                    <strong>&nbsp;</strong>\n                </p>\n                <div\n                    style=\"\n                        width: 80%;\n                        min-width: 300px;\n                        max-width: 400px;\n                        margin: auto;\n                        height: 500px;\n                        text-align: left;\n                    \"\n                >\n                    <FormKit type=\"form\" submit-label=\"Login\">\n                        <FormKit\n                            type=\"text\"\n                            name=\"email\"\n                            label=\"Your email\"\n                            placeholder=\"jane@example.com\"\n                            validation=\"required|email\"\n                        />\n                        <FormKit\n                            type=\"password\"\n                            name=\"password\"\n                            label=\"Password\"\n                            placeholder=\"Your password\"\n                            validation=\"required\"\n                        />\n                    </FormKit>\n                    <div class=\"footer\">\n                        <el-button link>Lost password</el-button>\n                    </div>\n                    <div style=\"margin-top: 50px\">\n                        <el-button size=\"large\">GitHub Login</el-button>\n                        <el-button size=\"large\">Google Login</el-button>\n                        <el-button size=\"large\">Microsoft</el-button>\n                    </div>\n                </div>\n                <p>PURISTA VOYAGE allows you to document,</p>\n            </div>\n        </div>\n        <div class=\"right-side\">\n            <div style=\"text-align: center; width: 100%\">\n                <h1>\n                    PURISTA\n                    <span class=\"headline-primary\">VOYAGE</span>\n                </h1>\n                <p>\n                    <strong>Start your visual journey now.</strong>\n                </p>\n                <el-carousel :interval=\"5000\" arrow=\"always\" height=\"auto\">\n                    <el-carousel-item\n                        v-for=\"item in 4\"\n                        :key=\"item\"\n                        style=\"height: 500px\"\n                    >\n                        <h3 text=\"2xl\" justify=\"center\">{{ item }}</h3>\n                    </el-carousel-item>\n                </el-carousel>\n                <p>PURISTA VOYAGE allows you to document,</p>\n            </div>\n        </div>\n    </div>\n</template>\n\n<style scoped>\n.page {\n    width: 100%;\n    display: flex;\n    flex-wrap: wrap;\n}\n\n.page > * {\n    flex-grow: 1;\n    flex-basis: 400px;\n}\n\n.left-side {\n    min-height: 100vh;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: center;\n}\n\n.right-side {\n    background-color: var(--el-fill-color);\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    justify-content: center;\n}\n\n.headline-primary {\n    color: var(--el-color-primary) !important;\n}\n\n.footer {\n    text-align: right;\n}\n\n.el-card.is-always-shadow {\n    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);\n}\n\n.el-carousel__item h3 {\n    color: #475669;\n    opacity: 0.75;\n    line-height: 300px;\n    margin: 0;\n    text-align: center;\n}\n\n.el-carousel__item:nth-child(2n) {\n    background-color: #99a9bf;\n}\n\n.el-carousel__item:nth-child(2n + 1) {\n    background-color: #d3dce6;\n}\n</style>\n",
+      "start": 1709718915490,
+      "end": 1709718915533,
+      "sourcemaps": null
+    },
+    {
+      "name": "unplugin-formkit",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1709718915533,
+      "end": 1709718915533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "const _sfc_main = {}\nimport { createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, withCtx as _withCtx, createTextVNode as _createTextVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-5d9a05bc\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = { class: \"page\" }\nconst _hoisted_2 = { class: \"left-side\" }\nconst _hoisted_3 = { style: {\"text-align\":\"center\",\"width\":\"100%\"} }\nconst _hoisted_4 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"h1\", null, \"Welcome back\", -1))\nconst _hoisted_5 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"p\", null, [\n  /*#__PURE__*/_createElementVNode(\"strong\", null, \" \")\n], -1))\nconst _hoisted_6 = { style: {\"width\":\"80%\",\"min-width\":\"300px\",\"max-width\":\"400px\",\"margin\":\"auto\",\"height\":\"500px\",\"text-align\":\"left\"} }\nconst _hoisted_7 = { class: \"footer\" }\nconst _hoisted_8 = { style: {\"margin-top\":\"50px\"} }\nconst _hoisted_9 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"p\", null, \"PURISTA VOYAGE allows you to document,\", -1))\nconst _hoisted_10 = { class: \"right-side\" }\nconst _hoisted_11 = { style: {\"text-align\":\"center\",\"width\":\"100%\"} }\nconst _hoisted_12 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"h1\", null, [\n  /*#__PURE__*/_createTextVNode(\" PURISTA \"),\n  /*#__PURE__*/_createElementVNode(\"span\", { class: \"headline-primary\" }, \"VOYAGE\")\n], -1))\nconst _hoisted_13 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"p\", null, [\n  /*#__PURE__*/_createElementVNode(\"strong\", null, \"Start your visual journey now.\")\n], -1))\nconst _hoisted_14 = {\n  text: \"2xl\",\n  justify: \"center\"\n}\nconst _hoisted_15 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"p\", null, \"PURISTA VOYAGE allows you to document,\", -1))\n\nfunction _sfc_render(_ctx, _cache) {\n  const _component_FormKit = _resolveComponent(\"FormKit\")\n  const _component_el_button = _resolveComponent(\"el-button\")\n  const _component_el_carousel_item = _resolveComponent(\"el-carousel-item\")\n  const _component_el_carousel = _resolveComponent(\"el-carousel\")\n\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n    _createElementVNode(\"div\", _hoisted_2, [\n      _createElementVNode(\"div\", _hoisted_3, [\n        _hoisted_4,\n        _hoisted_5,\n        _createElementVNode(\"div\", _hoisted_6, [\n          _createVNode(_component_FormKit, {\n            type: \"form\",\n            \"submit-label\": \"Login\"\n          }, {\n            default: _withCtx(() => [\n              _createVNode(_component_FormKit, {\n                type: \"text\",\n                name: \"email\",\n                label: \"Your email\",\n                placeholder: \"jane@example.com\",\n                validation: \"required|email\"\n              }),\n              _createVNode(_component_FormKit, {\n                type: \"password\",\n                name: \"password\",\n                label: \"Password\",\n                placeholder: \"Your password\",\n                validation: \"required\"\n              })\n            ]),\n            _: 1\n          }),\n          _createElementVNode(\"div\", _hoisted_7, [\n            _createVNode(_component_el_button, { link: \"\" }, {\n              default: _withCtx(() => [\n                _createTextVNode(\"Lost password\")\n              ]),\n              _: 1\n            })\n          ]),\n          _createElementVNode(\"div\", _hoisted_8, [\n            _createVNode(_component_el_button, { size: \"large\" }, {\n              default: _withCtx(() => [\n                _createTextVNode(\"GitHub Login\")\n              ]),\n              _: 1\n            }),\n            _createVNode(_component_el_button, { size: \"large\" }, {\n              default: _withCtx(() => [\n                _createTextVNode(\"Google Login\")\n              ]),\n              _: 1\n            }),\n            _createVNode(_component_el_button, { size: \"large\" }, {\n              default: _withCtx(() => [\n                _createTextVNode(\"Microsoft\")\n              ]),\n              _: 1\n            })\n          ])\n        ]),\n        _hoisted_9\n      ])\n    ]),\n    _createElementVNode(\"div\", _hoisted_10, [\n      _createElementVNode(\"div\", _hoisted_11, [\n        _hoisted_12,\n        _hoisted_13,\n        _createVNode(_component_el_carousel, {\n          interval: 5000,\n          arrow: \"always\",\n          height: \"auto\"\n        }, {\n          default: _withCtx(() => [\n            (_openBlock(), _createElementBlock(_Fragment, null, _renderList(4, (item) => {\n              return _createVNode(_component_el_carousel_item, {\n                key: item,\n                style: {\"height\":\"500px\"}\n              }, {\n                default: _withCtx(() => [\n                  _createElementVNode(\"h3\", _hoisted_14, _toDisplayString(item), 1)\n                ]),\n                _: 2\n              }, 1024)\n            }), 64))\n          ]),\n          _: 1\n        }),\n        _hoisted_15\n      ])\n    ])\n  ]))\n}\n\nimport \"/Users/sebastianwessel/projekte/voyage/pages/index.vue?vue&type=style&index=0&scoped=5d9a05bc&lang.css\"\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__scopeId',\"data-v-5d9a05bc\"]])",
+      "start": 1709718915533,
+      "end": 1709718915538,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1709718915538,
+      "end": 1709718915538,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1709718915538,
+      "end": 1709718915539,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "\nconst __nuxt_page_meta = null\nexport default __nuxt_page_meta\n",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA;AAAA;AAAA;"
+      }
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1709718915539,
+      "end": 1709718915539,
+      "order": "normal"
+    }
+  ]
+}
