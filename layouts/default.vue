@@ -5,7 +5,7 @@ const route = useRoute()
 
 const { status } = useAuth()
 
-const activeIndex = ref('/features')
+const activeIndex = ref('/')
 
 const handleSelect = (key: string) => {
   push(key)
@@ -37,11 +37,12 @@ const projects = ref<{ id: string; name: string }[]>([])
           @select="handleSelect"
           :ellipsis="false"
         >
-          <el-menu-item :index="isLoggedId ? '/app' : '/'"
+          <el-menu-item
             ><strong>PURISTA <span class="headline-primary">VOYAGE</span></strong></el-menu-item
           >
           <template v-if="!isLoggedId">
             <div class="flex-grow" />
+            <el-menu-item index="/">This is</el-menu-item>
             <el-menu-item index="/features">Features</el-menu-item>
             <el-menu-item index="/documentation">Documentation</el-menu-item>
             <el-menu-item index="/pricing">Pricing</el-menu-item>

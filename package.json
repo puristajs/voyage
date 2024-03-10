@@ -12,6 +12,7 @@
     "surreal": "docker run --rm -u \":\" --pull always -p 8000:8000 -v $(pwd)/surrealData:/mydata surrealdb/surrealdb:latest start --log trace --auth --user root --pass root file:mydatabase.db"
   },
   "dependencies": {
+    "@dargmuesli/nuxt-cookie-control": "^7.4.0",
     "@element-plus/icons-vue": "^2.3.1",
     "@element-plus/nuxt": "^1.0.7",
     "@nuxt/content": "^2.12.0",
@@ -20,10 +21,13 @@
     "@vue-flow/controls": "^1.1.1",
     "@vue-flow/core": "^1.33.4",
     "@vue-flow/minimap": "^1.4.0",
+    "@vueuse/nuxt": "^10.9.0",
     "element-plus": "^2.6.0",
     "fast-jwt": "^4.0.0",
+    "highlight.js": "^11.9.0",
     "next-auth": "4.22.5",
     "nuxt": "^3.10.3",
+    "nuxt-gtag": "^2.0.5",
     "surrealdb.node": "^0.3.0",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0",
